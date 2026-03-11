@@ -23,28 +23,12 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-        }
-
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
         .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
         header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
         .logo { font-size: 28px; font-weight: 800; background: linear-gradient(90deg, #fff, #A1A1AA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        .period-select {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 12px 24px;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-        }
-
+        .period-select { background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text); padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer; }
         .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
         .stat-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px; padding: 24px; text-align: center; transition: all 0.2s; }
         .stat-card:hover { border-color: var(--purple); transform: translateY(-2px); }
@@ -57,8 +41,7 @@
 
         .bar-chart { display: flex; align-items: flex-end; justify-content: space-between; height: 180px; padding-top: 20px; }
         .bar-item { display: flex; flex-direction: column; align-items: center; flex: 1; }
-        .bar { width: 28px; background: linear-gradient(180deg, var(--purple) 0%, #7C3AED 100%); border-radius: 6px 6px 0 0; transition: all 0.3s; }
-        .bar:hover { background: var(--purple-light); }
+        .bar { width: 28px; background: linear-gradient(180deg, var(--purple) 0%, #7C3AED 100%); border-radius: 6px 6px 0 0; }
         .bar-label { font-size: 11px; color: var(--text-muted); margin-top: 8px; }
         .bar-value { font-size: 11px; color: var(--text); font-weight: 600; margin-bottom: 4px; }
 
@@ -66,26 +49,23 @@
         .list-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
         .list-title { font-size: 16px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
 
-        .list-item { display: flex; align-items: center; padding: 12px; border-radius: 12px; margin-bottom: 8px; transition: all 0.2s; }
-        .list-item:hover { background: var(--bg-tertiary); }
+        .list-item { display: flex; align-items: center; padding: 14px; border-radius: 12px; margin-bottom: 8px; background: var(--bg-tertiary); }
+        .list-item:hover { background: #323238; }
 
-        .rank { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; margin-right: 12px; }
+        .rank { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; margin-right: 14px; flex-shrink: 0; }
         .rank-1 { background: linear-gradient(135deg, var(--gold), #D97706); color: #000; }
         .rank-2 { background: linear-gradient(135deg, var(--silver), #6B7280); color: #000; }
         .rank-3 { background: linear-gradient(135deg, var(--bronze), #B45309); color: #000; }
-        .rank-other { background: var(--bg-tertiary); color: var(--text-secondary); }
+        .rank-other { background: var(--bg-secondary); color: var(--text-secondary); }
 
-        .avatar { width: 48px; height: 48px; border-radius: 50%; margin-right: 14px; background: var(--bg-tertiary); object-fit: cover; border: 2px solid var(--purple); }
+        .avatar { width: 48px; height: 48px; border-radius: 50%; margin-right: 14px; flex-shrink: 0; background: var(--purple); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; color: white; border: 2px solid var(--purple); }
         
         .user-info { flex: 1; min-width: 0; }
-        .username { font-weight: 600; color: var(--text); font-size: 14px; display: block; }
-        .name { font-size: 12px; color: var(--text-secondary); display: block; margin-top: 2px; }
-        .bio { font-size: 11px; color: var(--text-muted); display: block; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 180px; }
+        .username { font-weight: 600; color: var(--text); font-size: 15px; display: block; }
+        .name { font-size: 13px; color: var(--purple-light); display: block; margin-top: 2px; }
+        .bio { font-size: 12px; color: var(--text-muted); display: block; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         
-        .top3 .name { font-size: 13px; }
-        .top3 .username { font-size: 15px; }
-        
-        .count { color: var(--purple); font-weight: 700; font-size: 15px; margin-left: 8px; }
+        .count { color: var(--purple); font-weight: 700; font-size: 16px; margin-left: 12px; flex-shrink: 0; }
 
         .best-tweet { background: var(--bg-tertiary); border-radius: 12px; padding: 16px; margin-top: 16px; }
         .best-tweet-text { color: var(--text); font-size: 14px; line-height: 1.5; margin-bottom: 12px; }
@@ -148,21 +128,21 @@
 
     <script>
         const userData = {
-            'Noxifer81': { name: 'Noxifer', bio: '🖤 AI creations #Freepik' },
-            'AllaAisling': { name: 'Alexandra Aisling', bio: 'Digital artist & creator' },
-            'Julian_cano_': { name: 'Julian C', bio: 'Digital Art - MidJourney' },
-            'NEXUS_TO_NOVA': { name: 'NΞXUS', bio: 'Midjourney Explorer' },
-            'MrsSpitFire252': { name: 'MrsSpitFire252', bio: 'AI creation enthusiast' },
-            'RoyalKongz': { name: 'Royal Kongz', bio: 'Digital art collector' },
-            'revelinai': { name: 'revelin.ai', bio: 'AI tools & resources' },
+            'Noxifer81': { name: 'Noxifer', bio: '🦇🖤 I just share my AI creations 🖤🦇 #Freepik Creative Partner' },
+            'AllaAisling': { name: 'Alexandra Aisling', bio: 'AI Creator, redefining the boundaries of AI-generated art' },
+            'Julian_cano_': { name: 'Julian C', bio: 'Digital Art - MidJourney - @topazlabs - @imagineart' },
+            'NEXUS_TO_NOVA': { name: 'NΞXUS', bio: 'Midjourney Explorer | Shaping thoughts into stories, visions born of machine' },
+            'MrsSpitFire252': { name: 'MrsSpitFire252', bio: 'Married to @RyanSpitFire252. Just a woman who loves family & AI creation' },
+            'RoyalKongz': { name: 'RoyalKongZ (Laurent)', bio: 'AI Visual Creator | Animations & Images 🎬' },
+            'revelinai': { name: 'revelin.ai', bio: 'AI tools & resources for creators' },
             'GlennHasABeard': { name: 'Glenn', bio: 'Tech & AI enthusiast' },
-            'matrixmurals': { name: 'matrixmurals', bio: 'AI-generated art daily' },
-            'DrSadek_': { name: 'DrSadek 🪶', bio: 'AI Art Ambassador' },
-            'UmbraNexus404': { name: 'UmbraNexus', bio: 'Futuristic & fantasy art' },
-            'ElaraVossAI': { name: 'ElaraVoss AI', bio: 'AI Artist' },
-            'Mechanismo0': { name: 'Mechanismo', bio: 'Digital creator' },
-            'karatademada': { name: 'karatademada', bio: 'Creative mind' },
-            'IamEmily2050': { name: 'Emily 2050', bio: 'Future AI explorer' },
+            'matrixmurals': { name: 'matrixmurals', bio: 'Sharing breathtaking AI-generated art daily! Grok is my friend!' },
+            'DrSadek_': { name: 'DrSadek 🪶', bio: 'I create AI Art | ImagineArt Ambassador' },
+            'UmbraNexus404': { name: 'UmbraNexus', bio: 'I make and share things inspired by futuristic and fantasy worlds' },
+            'ElaraVossAI': { name: 'ElaraVoss AI', bio: 'AI Artist exploring digital consciousness' },
+            'Mechanismo0': { name: 'Mechanismo', bio: 'Digital creator & AI artist' },
+            'karatademada': { name: 'karatademada', bio: 'Creative mind sharing art' },
+            'IamEmily2050': { name: 'Emily 2050', bio: 'Exploring the future with AI' },
         };
 
         const repliesTo = [
@@ -196,8 +176,8 @@
             {day: 'Thu', value: 85}, {day: 'Fri', value: 72}, {day: 'Sat', value: 28}, {day: 'Sun', value: 15},
         ];
 
-        function getAvatar(username) {
-            return `https://api.dicebear.com/7.x/avataaars/svg?seed=${username}&backgroundColor=8B5CF6`;
+        function getInitials(name) {
+            return name.split(' ').map(n => n[0]).join('').substring(0,2).toUpperCase();
         }
 
         function getUserData(username) {
@@ -218,11 +198,10 @@
             data.forEach((r, i) => {
                 const u = getUserData(r.username);
                 const rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : 'rank-other';
-                const top3Class = i < 3 ? 'top3' : '';
                 container.innerHTML += `
-                    <div class="list-item ${top3Class}">
+                    <div class="list-item">
                         <div class="rank ${rankClass}">${i + 1}</div>
-                        <img class="avatar" src="${getAvatar(r.username)}" alt="${r.username}">
+                        <div class="avatar">${getInitials(u.name)}</div>
                         <div class="user-info">
                             <span class="username">@${r.username}</span>
                             <span class="name">${u.name}</span>
