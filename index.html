@@ -16,7 +16,6 @@
             --text-muted: #71717A;
             --purple: #8B5CF6;
             --purple-light: #A78BFA;
-            --purple-dark: #7C3AED;
             --gold: #F59E0B;
             --silver: #9CA3AF;
             --bronze: #CD7F32;
@@ -31,31 +30,14 @@
             min-height: 100vh;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 24px;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 32px;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 800;
-            background: linear-gradient(90deg, #fff, #A1A1AA);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
+        .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
+        .logo { font-size: 28px; font-weight: 800; background: linear-gradient(90deg, #fff, #A1A1AA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
         .period-select {
             background: var(--bg-secondary);
-            border solid var(--border);
-            color:: 1px var(--text);
+            border: 1px solid var(--border);
+            color: var(--text);
             padding: 12px 24px;
             border-radius: 10px;
             font-size: 14px;
@@ -63,86 +45,20 @@
             cursor: pointer;
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-bottom: 32px;
-        }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+        .stat-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px; padding: 24px; text-align: center; transition: all 0.2s; }
+        .stat-card:hover { border-color: var(--purple); transform: translateY(-2px); }
+        .stat-value { font-size: 36px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+        .stat-label { font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
 
-        .stat-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 24px;
-            text-align: center;
-            transition: all 0.2s;
-        }
+        .charts-row { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 32px; }
+        .chart-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+        .chart-title { font-size: 16px; font-weight: 600; margin-bottom: 20px; color: var(--text); }
 
-        .stat-card:hover {
-            border-color: var(--purple);
-            transform: translateY(-2px);
-        }
-
-        .stat-value {
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 4px;
-        }
-
-        .stat-label {
-            font-size: 13px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .charts-row {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 24px;
-            margin-bottom: 32px;
-        }
-
-        .chart-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 24px;
-        }
-
-        .chart-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--text);
-        }
-
-        .bar-chart {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            height: 180px;
-            padding-top: 20px;
-        }
-
-        .bar-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            flex: 1;
-        }
-
-        .bar {
-            width: 28px;
-            background: linear-gradient(180deg, var(--purple) 0%, var(--purple-dark) 100%);
-            border-radius: 6px 6px 0 0;
-            transition: all 0.3s;
-        }
-
+        .bar-chart { display: flex; align-items: flex-end; justify-content: space-between; height: 180px; padding-top: 20px; }
+        .bar-item { display: flex; flex-direction: column; align-items: center; flex: 1; }
+        .bar { width: 28px; background: linear-gradient(180deg, var(--purple) 0%, #7C3AED 100%); border-radius: 6px 6px 0 0; transition: all 0.3s; }
         .bar:hover { background: var(--purple-light); }
-
         .bar-label { font-size: 11px; color: var(--text-muted); margin-top: 8px; }
         .bar-value { font-size: 11px; color: var(--text); font-weight: 600; margin-bottom: 4px; }
 
@@ -150,45 +66,26 @@
         .list-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
         .list-title { font-size: 16px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
 
-        .list-item {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            border-radius: 10px;
-            margin-bottom: 6px;
-            transition: all 0.2s;
-        }
-
+        .list-item { display: flex; align-items: center; padding: 12px; border-radius: 12px; margin-bottom: 8px; transition: all 0.2s; }
         .list-item:hover { background: var(--bg-tertiary); }
 
-        .rank {
-            width: 26px; height: 26px; border-radius: 6px;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 700; font-size: 11px; margin-right: 10px;
-        }
-
+        .rank { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; margin-right: 12px; }
         .rank-1 { background: linear-gradient(135deg, var(--gold), #D97706); color: #000; }
         .rank-2 { background: linear-gradient(135deg, var(--silver), #6B7280); color: #000; }
         .rank-3 { background: linear-gradient(135deg, var(--bronze), #B45309); color: #000; }
         .rank-other { background: var(--bg-tertiary); color: var(--text-secondary); }
 
-        .avatar {
-            width: 44px; height: 44px; border-radius: 50%;
-            margin-right: 12px;
-            background: var(--bg-tertiary);
-            object-fit: cover;
-        }
-
-        .user-info { flex: 1; min-width: 0; }
-        .username { font-weight: 600; color: var(--text); font-size: 14px; }
-        .name { font-size: 12px; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .bio { font-size: 11px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px; }
+        .avatar { width: 48px; height: 48px; border-radius: 50%; margin-right: 14px; background: var(--bg-tertiary); object-fit: cover; border: 2px solid var(--purple); }
         
-        .top3 .user-info { display: flex; flex-direction: column; }
-        .top3 .name { order: -1; margin-bottom: 2px; }
+        .user-info { flex: 1; min-width: 0; }
+        .username { font-weight: 600; color: var(--text); font-size: 14px; display: block; }
+        .name { font-size: 12px; color: var(--text-secondary); display: block; margin-top: 2px; }
+        .bio { font-size: 11px; color: var(--text-muted); display: block; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 180px; }
+        
+        .top3 .name { font-size: 13px; }
         .top3 .username { font-size: 15px; }
         
-        .count { color: var(--purple); font-weight: 700; font-size: 14px; margin-left: 8px; }
+        .count { color: var(--purple); font-weight: 700; font-size: 15px; margin-left: 8px; }
 
         .best-tweet { background: var(--bg-tertiary); border-radius: 12px; padding: 16px; margin-top: 16px; }
         .best-tweet-text { color: var(--text); font-size: 14px; line-height: 1.5; margin-bottom: 12px; }
@@ -218,22 +115,10 @@
         </header>
 
         <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-value" id="tweets">98</div>
-                <div class="stat-label">Tweets</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value" id="impressions">2.5K</div>
-                <div class="stat-label">Impressions</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value" id="engagements">181</div>
-                <div class="stat-label">Engagements</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value" id="rate">7.2%</div>
-                <div class="stat-label">Engagement Rate</div>
-            </div>
+            <div class="stat-card"><div class="stat-value">98</div><div class="stat-label">Tweets</div></div>
+            <div class="stat-card"><div class="stat-value">2.5K</div><div class="stat-label">Impressions</div></div>
+            <div class="stat-card"><div class="stat-value">181</div><div class="stat-label">Engagements</div></div>
+            <div class="stat-card"><div class="stat-value">7.2%</div><div class="stat-label">Engagement Rate</div></div>
         </div>
 
         <div class="charts-row">
@@ -246,28 +131,16 @@
                 <div class="best-tweet">
                     <div class="best-tweet-text">@username Thanks for the shoutout! Really appreciate the support from this community.</div>
                     <div class="best-tweet-stats">
-                        <div class="best-tweet-stat">
-                            <div class="best-tweet-stat-value">2.4K</div>
-                            <div class="best-tweet-stat-label">Impressions</div>
-                        </div>
-                        <div class="best-tweet-stat">
-                            <div class="best-tweet-stat-value">156</div>
-                            <div class="best-tweet-stat-label">Engagements</div>
-                        </div>
+                        <div class="best-tweet-stat"><div class="best-tweet-stat-value">2.4K</div><div class="best-tweet-stat-label">Impressions</div></div>
+                        <div class="best-tweet-stat"><div class="best-tweet-stat-value">156</div><div class="best-tweet-stat-label">Engagements</div></div>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="lists-row">
-            <div class="list-card">
-                <div class="list-title">📤 You Replied To</div>
-                <div id="repliesTo"></div>
-            </div>
-            <div class="list-card">
-                <div class="list-title">🔄 Reply Reciprocity</div>
-                <div id="repliesFrom"></div>
-            </div>
+            <div class="list-card"><div class="list-title">📤 You Replied To</div><div id="repliesTo"></div></div>
+            <div class="list-card"><div class="list-title">🔄 Reply Reciprocity</div><div id="repliesFrom"></div></div>
         </div>
 
         <footer>NotPhilSledge Analytics • Built with X API • March 2026</footer>
@@ -275,21 +148,21 @@
 
     <script>
         const userData = {
-            'Noxifer81': { name: 'Noxifer', avatar: 'https://pbs.twimg.com/profile_images/1879771502231363584/AKvg6eMr_400x400.jpg', bio: '🖤 I just share my AI creations #Freepik' },
-            'AllaAisling': { name: 'Alexandra Aisling', avatar: 'https://pbs.twimg.com/profile_images/1868935691547029504/MvUL8dAM_400x400.jpg', bio: 'Digital artist & creator' },
-            'Julian_cano_': { name: 'Julian C', avatar: 'https://pbs.twimg.com/profile_images/1825644030843674624/h8OAGi9d_400x400.jpg', bio: 'Digital Art - MidJourney' },
-            'NEXUS_TO_NOVA': { name: 'NΞXUS', avatar: 'https://pbs.twimg.com/profile_images/1858702748647022592/yCZvdO0O_400x400.jpg', bio: 'Midjourney Explorer' },
-            'MrsSpitFire252': { name: 'MrsSpitFire252', avatar: 'https://pbs.twimg.com/profile_images/530201202482622464/l4R16qIX_400x400.jpg', bio: 'AI creation enthusiast' },
-            'RoyalKongz': { name: 'Royal Kongz', avatar: 'https://pbs.twimg.com/profile_images/1831986868628484096/z_9pVAlG_400x400.jpg', bio: 'Digital art collector' },
-            'revelinai': { name: 'revelin.ai', avatar: 'https://pbs.twimg.com/profile_images/1869483946848522240/7pJmV1k5_400x400.jpg', bio: 'AI tools & resources' },
-            'GlennHasABeard': { name: 'Glenn', avatar: 'https://pbs.twimg.com/profile_images/1859526607752470528/5k1T2cB__400x400.jpg', bio: 'Tech & AI enthusiast' },
-            'matrixmurals': { name: 'matrixmurals', avatar: 'https://pbs.twimg.com/profile_images/1837955512345522176/TJGiAqMU_400x400.jpg', bio: 'AI-generated art daily' },
-            'DrSadek_': { name: 'DrSadek 🪶', avatar: 'https://pbs.twimg.com/profile_images/1792519892511244288/A4gR0g1__400x400.jpg', bio: 'AI Art Ambassador' },
-            'UmbraNexus404': { name: 'UmbraNexus', avatar: 'https://pbs.twimg.com/profile_images/1878351642327625728/LxIQVQB_400x400.jpg', bio: 'Futuristic & fantasy art' },
-            'ElaraVossAI': { name: 'ElaraVoss AI', avatar: 'https://pbs.twimg.com/profile_images/1879582549498478592/h6i4M7n__400x400.jpg', bio: 'AI Artist' },
-            'Mechanismo0': { name: 'Mechanismo', avatar: 'https://pbs.twimg.com/profile_images/1877734828860473344/SK2i2tq__400x400.jpg', bio: 'Digital creator' },
-            'karatademada': { name: 'karatademada', avatar: 'https://pbs.twimg.com/profile_images/1877734590001176576/h4i3MqF__400x400.jpg', bio: 'Creative mind' },
-            'IamEmily2050': { name: 'Emily 2050', avatar: 'https://pbs.twimg.com/profile_images/1879590136021176320/l5i5HpE__400x400.jpg', bio: 'Future AI explorer' },
+            'Noxifer81': { name: 'Noxifer', bio: '🖤 AI creations #Freepik' },
+            'AllaAisling': { name: 'Alexandra Aisling', bio: 'Digital artist & creator' },
+            'Julian_cano_': { name: 'Julian C', bio: 'Digital Art - MidJourney' },
+            'NEXUS_TO_NOVA': { name: 'NΞXUS', bio: 'Midjourney Explorer' },
+            'MrsSpitFire252': { name: 'MrsSpitFire252', bio: 'AI creation enthusiast' },
+            'RoyalKongz': { name: 'Royal Kongz', bio: 'Digital art collector' },
+            'revelinai': { name: 'revelin.ai', bio: 'AI tools & resources' },
+            'GlennHasABeard': { name: 'Glenn', bio: 'Tech & AI enthusiast' },
+            'matrixmurals': { name: 'matrixmurals', bio: 'AI-generated art daily' },
+            'DrSadek_': { name: 'DrSadek 🪶', bio: 'AI Art Ambassador' },
+            'UmbraNexus404': { name: 'UmbraNexus', bio: 'Futuristic & fantasy art' },
+            'ElaraVossAI': { name: 'ElaraVoss AI', bio: 'AI Artist' },
+            'Mechanismo0': { name: 'Mechanismo', bio: 'Digital creator' },
+            'karatademada': { name: 'karatademada', bio: 'Creative mind' },
+            'IamEmily2050': { name: 'Emily 2050', bio: 'Future AI explorer' },
         };
 
         const repliesTo = [
@@ -323,8 +196,12 @@
             {day: 'Thu', value: 85}, {day: 'Fri', value: 72}, {day: 'Sat', value: 28}, {day: 'Sun', value: 15},
         ];
 
+        function getAvatar(username) {
+            return `https://api.dicebear.com/7.x/avataaars/svg?seed=${username}&backgroundColor=8B5CF6`;
+        }
+
         function getUserData(username) {
-            return userData[username] || { name: username, avatar: `https://api.dicebear.com/7.x/initials/svg?seed=${username}&backgroundColor=8B5CF6`, bio: '' };
+            return userData[username] || { name: username, bio: '' };
         }
 
         function renderChart() {
@@ -345,11 +222,11 @@
                 container.innerHTML += `
                     <div class="list-item ${top3Class}">
                         <div class="rank ${rankClass}">${i + 1}</div>
-                        <img class="avatar" src="${u.avatar}" alt="${r.username}" onerror="this.src='https://api.dicebear.com/7.x/initials/svg?seed=${r.username}&backgroundColor=8B5CF6'">
+                        <img class="avatar" src="${getAvatar(r.username)}" alt="${r.username}">
                         <div class="user-info">
                             <span class="username">@${r.username}</span>
-                            ${u.name !== r.username ? `<span class="name">${u.name}</span>` : ''}
-                            ${u.bio ? `<span class="bio">${u.bio}</span>` : ''}
+                            <span class="name">${u.name}</span>
+                            <span class="bio">${u.bio}</span>
                         </div>
                         <span class="count">${r.count}</span>
                     </div>`;
