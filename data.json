@@ -1,37 +1,39 @@
 {
   "profile": {
     "username": "NotPhilSledge",
-    "name": "NotPhilSledge"
+    "name": "NotPhilSledge",
+    "followers": 37433,
+    "following": 1166
   },
   "repliesTo": [
+    {"username": "revelinai", "count": 4},
+    {"username": "MaxVOAO", "count": 3},
+    {"username": "GlennHasABeard", "count": 3},
+    {"username": "azed_ai", "count": 3},
+    {"username": "icreatelife", "count": 3},
+    {"username": "AllaAisling", "count": 3},
+    {"username": "surrealandEth", "count": 2},
+    {"username": "karatademada", "count": 2},
+    {"username": "UmbraNexus404", "count": 2},
     {"username": "NEXUS_TO_NOVA", "count": 2},
-    {"username": "uncannot", "count": 1},
-    {"username": "novikoff", "count": 1},
-    {"username": "micheal_ws18", "count": 1},
-    {"username": "de5imulate", "count": 1},
-    {"username": "blasfemiadigit", "count": 1},
-    {"username": "azed_ai", "count": 1},
-    {"username": "RoyalKongz", "count": 1},
-    {"username": "MrsSpitFire252", "count": 1},
-    {"username": "M4CHIN4art", "count": 1},
-    {"username": "DrSadek_", "count": 1},
-    {"username": "DocT___", "count": 1},
-    {"username": "AllaAisling", "count": 1},
-    {"username": "AiAlpha49697", "count": 1},
-    {"username": "AI_Ethicist_NYC", "count": 1}
+    {"username": "Noxifer81", "count": 2},
+    {"username": "QamarRiaz1", "count": 2},
+    {"username": "Parsifel1", "count": 2},
+    {"username": "BeanieBlossom", "count": 2},
+    {"username": "bmx_ai13", "count": 2}
   ],
   "repliesFrom": [
-    {"username": "MrsSpitFire252", "count": 5},
-    {"username": "AllaAisling", "count": 4},
-    {"username": "Julian_cano_", "count": 3},
-    {"username": "RoyalKongz", "count": 3},
-    {"username": "NEXUS_TO_NOVA", "count": 3},
-    {"username": "Noxifer81", "count": 3}
+    {"username": "Noxifer81", "count": 1},
+    {"username": "NEXUS_TO_NOVA", "count": 1},
+    {"username": "Mechanismo0", "count": 1},
+    {"username": "karatademada", "count": 1},
+    {"username": "ElaraVossAI", "count": 1},
+    {"username": "IamEmily2050", "count": 1}
   ],
   "totals": {
-    "repliesSent": 16,
-    "repliesReceived": 20,
-    "uniqueEngaged": 15
+    "repliesSent": 92,
+    "repliesReceived": 18,
+    "uniqueEngaged": 61
   },
-  "lastUpdated": "2026-03-11T08:41:00Z"
+  "lastUpdated": "2026-03-11T09:12:00Z"
 }
