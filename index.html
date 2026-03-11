@@ -5,13 +5,13 @@
 <title>NotPhilSledge Analytics</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0D0D0F;--bg2:#18181B;--bg3:#27272A;--purple:#8B5CF6;--gold:#F59E0B;--silver:#9CA3AF;--bronze:#CD7F32;--text:#FAFAFA;--muted:#71717A}
+:root{--bg:#0D0D0F;--bg2:#18181B;--bg3:#27272A;--purple:#8B5CF6;--gold:#F59E0B;--silver:#9CA3AF;--bronze:#CD7F32;--text:#FAFAFA;--muted:#71717A;--green:#22C55E}
 body{font-family:Inter,sans-serif;background:var(--bg);color:var(--text);margin:0;padding:24px}
 .c{max-width:1100px;margin:0 auto}
-.s{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
-.st{background:var(--bg2);border:1px solid var(--bg3);border-radius:16px;padding:24px;text-align:center}
-.sv{font-size:36px;font-weight:700}
-.sl{font-size:13px;color:var(--muted);text-transform:uppercase}
+.s{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:32px}
+.st{background:var(--bg2);border:1px solid var(--bg3);border-radius:16px;padding:20px;text-align:center}
+.sv{font-size:28px;font-weight:700}
+.sl{font-size:11px;color:var(--muted);text-transform:uppercase}
 .r{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px}
 .l{background:var(--bg2);border:1px solid var(--bg3);border-radius:16px;padding:24px}
 .li{display:flex;align-items:center;padding:14px;background:var(--bg3);border-radius:12px;margin-bottom:8px}
@@ -34,16 +34,19 @@ h2{font-size:16px;margin-bottom:16px}
 .bestsv{font-size:20px;font-weight:700;color:var(--purple)}
 .bests{font-size:12px;color:var(--muted)}
 ftr{text-align:center;padding:20px;color:var(--muted);font-size:13px}
+h1{font-size:28px;margin-bottom:24px;background:linear-gradient(90deg,#fff,#aaa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.token{background:var(--green);color:#000;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600}
 </style>
 </head>
 <body>
 <div class="c">
-<h1>NotPhilSledge Analytics</h1>
+<h1>⚡ NotPhilSledge Analytics <span class="token">$94.12 credits</span></h1>
 <div class="s">
 <div class="st"><div class="sv">98</div><div class="sl">Tweets</div></div>
 <div class="st"><div class="sv">2.5K</div><div class="sl">Impressions</div></div>
 <div class="st"><div class="sv">181</div><div class="sl">Engagements</div></div>
 <div class="st"><div class="sv">7.2%</div><div class="sl">Rate</div></div>
+<div class="st"><div class="sv">50</div><div class="sl">Unfollowed</div></div>
 </div>
 <div class="r">
 <div class="l"><h2>Daily Engagement</h2><div class="bar" id="chart"></div></div>
@@ -53,7 +56,7 @@ ftr{text-align:center;padding:20px;color:var(--muted);font-size:13px}
 <div class="l"><h2>You Replied To</h2><div id="r1"></div></div>
 <div class="l"><h2>Reply Reciprocity</h2><div id="r2"></div></div>
 </div>
-<ftr>NotPhilSledge Analytics - March 2026</ftr>
+<ftr>Updated: March 11, 2026 | API Credits: $94.12 remaining</ftr>
 </div>
 <script>
 const d1=[
