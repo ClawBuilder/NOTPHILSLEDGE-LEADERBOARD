@@ -6,7 +6,11 @@
   "repliesTo": [
     {
       "username": "AllaAisling",
-      "count": 4
+      "count": 7
+    },
+    {
+      "username": "azed_ai",
+      "count": 5
     },
     {
       "username": "MrsSpitFire252",
@@ -14,6 +18,18 @@
     },
     {
       "username": "RoyalKongz",
+      "count": 4
+    },
+    {
+      "username": "karatademada",
+      "count": 4
+    },
+    {
+      "username": "revelinai",
+      "count": 4
+    },
+    {
+      "username": "NEXUS_TO_NOVA",
       "count": 3
     },
     {
@@ -22,47 +38,31 @@
     },
     {
       "username": "AiAlpha49697",
-      "count": 2
+      "count": 3
+    },
+    {
+      "username": "novikoff",
+      "count": 3
+    },
+    {
+      "username": "MaxVOAO",
+      "count": 3
+    },
+    {
+      "username": "GlennHasABeard",
+      "count": 3
+    },
+    {
+      "username": "icreatelife",
+      "count": 3
     },
     {
       "username": "micheal_ws18",
       "count": 2
     },
     {
-      "username": "azed_ai",
-      "count": 2
-    },
-    {
-      "username": "NEXUS_TO_NOVA",
-      "count": 1
-    },
-    {
       "username": "uncannot",
-      "count": 1
-    },
-    {
-      "username": "novikoff",
-      "count": 1
-    },
-    {
-      "username": "DrSadek_",
-      "count": 1
-    },
-    {
-      "username": "blasfemiadigit",
-      "count": 1
-    },
-    {
-      "username": "DocT___",
-      "count": 1
-    },
-    {
-      "username": "AI_Ethicist_NYC",
-      "count": 1
-    },
-    {
-      "username": "de5imulate",
-      "count": 1
+      "count": 2
     }
   ],
   "repliesFrom": [
@@ -72,9 +72,9 @@
     }
   ],
   "totals": {
-    "repliesSent": 29,
-    "repliesReceived": 16,
-    "uniqueEngaged": 16
+    "repliesSent": 121,
+    "repliesReceived": 68,
+    "uniqueEngaged": 68
   },
-  "lastUpdated": "2026-03-11T09:48:00Z"
+  "lastUpdated": "2026-03-11T09:51:00Z"
 }
