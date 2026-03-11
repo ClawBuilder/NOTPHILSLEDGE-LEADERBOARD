@@ -26,12 +26,17 @@ st.markdown("""
         border-radius: 1rem;
         border: 1px solid #2a2a3a;
     }
-    .stMetric label {
-        color: #8a8a9a !important;
+    .stMarkdown, .stText, p, div {
+        color: #fff !important;
     }
-    .stMetric [data-testid="stMetricValue"] {
+    .stMarkdown p {
+        color: #fff !important;
+    }
+    [data-testid="stMetricValue"] {
         color: #ff6b35 !important;
-        font-size: 2.5rem !important;
+    }
+    [data-testid="stMetricLabel"] {
+        color: #8a8a9a !important;
     }
     h2 {
         color: #fff !important;
