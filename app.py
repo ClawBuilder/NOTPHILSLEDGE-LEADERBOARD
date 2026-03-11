@@ -7,7 +7,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# Blackmagic-inspired dark theme
+# Blackmagic-inspired dark theme with profile pics
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -18,7 +18,7 @@ st.markdown("""
     }
     
     h1 {
-        font-size: 2.5rem !important;
+        font-size: 2rem !important;
         font-weight: 700 !important;
         background: linear-gradient(90deg, #8B5CF6, #A78BFA);
         -webkit-background-clip: text;
@@ -32,38 +32,29 @@ st.markdown("""
         margin-bottom: 2rem;
     }
     
-    .stMetric {
-        background: #18181B !important;
-        border: 1px solid #27272A !important;
-        padding: 1.25rem !important;
-        border-radius: 12px !important;
-    }
-    
     [data-testid="stMetricLabel"] {
         color: #A1A1AA !important;
-        font-size: 0.75rem !important;
+        font-size: 0.7rem !important;
         text-transform: uppercase;
-        letter-spacing: 0.05em;
     }
     
     [data-testid="stMetricValue"] {
         color: #FFFFFF !important;
-        font-size: 1.75rem !important;
+        font-size: 1.5rem !important;
         font-weight: 600 !important;
     }
     
     h2 {
         color: #E4E4E7 !important;
-        font-size: 1.25rem !important;
+        font-size: 1rem !important;
         font-weight: 600 !important;
-        margin-bottom: 1rem !important;
     }
     
     .leaderboard-card {
         background: #18181B;
         border: 1px solid #27272A;
         border-radius: 12px;
-        padding: 1rem;
+        padding: 0.75rem;
         margin-bottom: 0.5rem;
         display: flex;
         align-items: center;
@@ -75,16 +66,25 @@ st.markdown("""
         border-color: #3F3F46;
     }
     
+    .avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        margin-right: 0.75rem;
+        object-fit: cover;
+        background: #27272A;
+    }
+    
     .rank {
-        width: 32px;
-        height: 32px;
-        border-radius: 8px;
+        width: 24px;
+        height: 24px;
+        border-radius: 6px;
         display: flex;
         align-items: center;
         justify-content: center;
         font-weight: 600;
-        font-size: 0.875rem;
-        margin-right: 1rem;
+        font-size: 0.7rem;
+        margin-right: 0.5rem;
     }
     
     .rank-1 { background: linear-gradient(135deg, #F59E0B, #D97706); color: #000; }
@@ -95,12 +95,14 @@ st.markdown("""
     .username {
         color: #E4E4E7;
         font-weight: 500;
+        font-size: 0.9rem;
         flex: 1;
     }
     
     .count {
         color: #8B5CF6;
         font-weight: 600;
+        font-size: 0.9rem;
     }
     
     .section-header {
@@ -111,13 +113,13 @@ st.markdown("""
     }
     
     .section-icon {
-        font-size: 1.25rem;
+        font-size: 1rem;
     }
     
     .divider {
         background: linear-gradient(90deg, transparent, #27272A, transparent);
         height: 1px;
-        margin: 2rem 0;
+        margin: 1.5rem 0;
     }
     
     footer {
@@ -132,11 +134,15 @@ st.markdown("""
         border: none !important;
         color: white !important;
         border-radius: 8px !important;
-        font-weight: 500 !important;
     }
     
     .stButton button:hover {
         background: #7C3AED !important;
+    }
+    
+    .user-cell {
+        display: flex;
+        align-items: center;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -148,6 +154,10 @@ try:
 except FileNotFoundError:
     st.error("data.json not found!")
     st.stop()
+
+# Helper to get avatar URL
+def get_avatar(username):
+    return f"https://unavatar.io/x/{username}?fallback=https://api.dicebear.com/7.x/initials/svg?seed={username}&backgroundColor=8B5CF6"
 
 # Header
 st.title("NotPhilSledge")
@@ -177,9 +187,11 @@ with col_left:
     replies_to = data.get('repliesTo', [])
     for i, r in enumerate(replies_to[:10]):
         rank_class = f"rank-{i+1}" if i < 3 else "rank-other"
+        avatar_url = get_avatar(r['username'])
         st.markdown(f"""
         <div class="leaderboard-card">
             <div class="rank {rank_class}">{i+1}</div>
+            <img class="avatar" src="{avatar_url}" alt="{r['username']}" onerror="this.src='https://api.dicebear.com/7.x/initials/svg?seed={r['username']}&backgroundColor=8B5CF6'">
             <div class="username">@{r['username']}</div>
             <div class="count">{r['count']}</div>
         </div>
@@ -190,9 +202,11 @@ with col_right:
     replies_from = data.get('repliesFrom', [])
     for i, r in enumerate(replies_from[:10]):
         rank_class = f"rank-{i+1}" if i < 3 else "rank-other"
+        avatar_url = get_avatar(r['username'])
         st.markdown(f"""
         <div class="leaderboard-card">
             <div class="rank {rank_class}">{i+1}</div>
+            <img class="avatar" src="{avatar_url}" alt="{r['username']}" onerror="this.src='https://api.dicebear.com/7.x/initials/svg?seed={r['username']}&backgroundColor=8B5CF6'">
             <div class="username">@{r['username']}</div>
             <div class="count">{r['count']}</div>
         </div>
