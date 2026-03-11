@@ -1,51 +1,142 @@
 import streamlit as st
 import json
-from datetime import datetime
 
 st.set_page_config(
-    page_title="NotPhilSledge Leaderboard",
-    page_icon="🏆",
+    page_title="NotPhilSledge",
+    page_icon="⚡",
     layout="wide"
 )
 
-# Custom CSS for better styling
+# Blackmagic-inspired dark theme
 st.markdown("""
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
     .stApp {
-        background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+        background: #0D0D0F;
+        font-family: 'Inter', sans-serif;
     }
+    
     h1 {
-        color: #ff6b35 !important;
-        text-align: center;
-        font-size: 3rem !important;
-        margin-bottom: 2rem !important;
+        font-size: 2.5rem !important;
+        font-weight: 700 !important;
+        background: linear-gradient(90deg, #8B5CF6, #A78BFA);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0.5rem !important;
     }
+    
+    .subtitle {
+        color: #71717A;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    
     .stMetric {
-        background: #12121a;
-        padding: 1.5rem;
-        border-radius: 1rem;
-        border: 1px solid #2a2a3a;
+        background: #18181B !important;
+        border: 1px solid #27272A !important;
+        padding: 1.25rem !important;
+        border-radius: 12px !important;
     }
-    .stMarkdown, .stText, p, div {
-        color: #fff !important;
-    }
-    .stMarkdown p {
-        color: #fff !important;
-    }
-    [data-testid="stMetricValue"] {
-        color: #ff6b35 !important;
-    }
+    
     [data-testid="stMetricLabel"] {
-        color: #8a8a9a !important;
+        color: #A1A1AA !important;
+        font-size: 0.75rem !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
     }
+    
+    [data-testid="stMetricValue"] {
+        color: #FFFFFF !important;
+        font-size: 1.75rem !important;
+        font-weight: 600 !important;
+    }
+    
     h2 {
-        color: #fff !important;
-        border-bottom: 2px solid #ff6b35;
-        padding-bottom: 0.5rem;
+        color: #E4E4E7 !important;
+        font-size: 1.25rem !important;
+        font-weight: 600 !important;
+        margin-bottom: 1rem !important;
     }
-    .stDataFrame {
-        background: #12121a;
-        border-radius: 1rem;
+    
+    .leaderboard-card {
+        background: #18181B;
+        border: 1px solid #27272A;
+        border-radius: 12px;
+        padding: 1rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        transition: all 0.2s;
+    }
+    
+    .leaderboard-card:hover {
+        background: #27272A;
+        border-color: #3F3F46;
+    }
+    
+    .rank {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 0.875rem;
+        margin-right: 1rem;
+    }
+    
+    .rank-1 { background: linear-gradient(135deg, #F59E0B, #D97706); color: #000; }
+    .rank-2 { background: linear-gradient(135deg, #9CA3AF, #6B7280); color: #000; }
+    .rank-3 { background: linear-gradient(135deg, #CD7F32, #B45309); color: #000; }
+    .rank-other { background: #27272A; color: #A1A1AA; }
+    
+    .username {
+        color: #E4E4E7;
+        font-weight: 500;
+        flex: 1;
+    }
+    
+    .count {
+        color: #8B5CF6;
+        font-weight: 600;
+    }
+    
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .section-icon {
+        font-size: 1.25rem;
+    }
+    
+    .divider {
+        background: linear-gradient(90deg, transparent, #27272A, transparent);
+        height: 1px;
+        margin: 2rem 0;
+    }
+    
+    footer {
+        color: #52525B;
+        font-size: 0.75rem;
+        text-align: center;
+        margin-top: 2rem;
+    }
+    
+    .stButton button {
+        background: #8B5CF6 !important;
+        border: none !important;
+        color: white !important;
+        border-radius: 8px !important;
+        font-weight: 500 !important;
+    }
+    
+    .stButton button:hover {
+        background: #7C3AED !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -59,10 +150,8 @@ except FileNotFoundError:
     st.stop()
 
 # Header
-st.title("🏆 NotPhilSledge")
-
-st.markdown("### Engagement Leaderboard")
-st.markdown("*Tracking interactions with the X AI community*")
+st.title("NotPhilSledge")
+st.markdown("*X Engagement Analytics*")
 
 # Stats row
 t = data['totals']
@@ -70,37 +159,47 @@ rate = round((t['repliesReceived'] / t['repliesSent']) * 100) if t['repliesSent'
 
 col1, col2, col3, col4 = st.columns(4)
 with col1:
-    st.metric("📤 Replies Sent", t['repliesSent'])
+    st.metric("Replies Sent", t['repliesSent'])
 with col2:
-    st.metric("📥 Replies Received", t['repliesReceived'])
+    st.metric("Replies Received", t['repliesReceived'])
 with col3:
-    st.metric("👥 Unique Accounts", t['uniqueEngaged'])
+    st.metric("Unique Accounts", t['uniqueEngaged'])
 with col4:
-    st.metric("📊 Reply Rate", f"{rate}%")
+    st.metric("Reply Rate", f"{rate}%")
 
-st.divider()
+st.markdown('<div class="divider"></div>', unsafe_allow_html=True)
 
-# Two columns for leaderboards
+# Two columns
 col_left, col_right = st.columns(2)
 
 with col_left:
-    st.subheader("📤 You Replied To")
+    st.markdown('<div class="section-header"><span class="section-icon">📤</span><h2>You Replied To</h2></div>', unsafe_allow_html=True)
     replies_to = data.get('repliesTo', [])
     for i, r in enumerate(replies_to[:10]):
-        medal = "🥇" if i == 0 else "🥈" if i == 1 else "🥉" if i == 2 else "  "
-        st.markdown(f"{medal} **#{i+1}** @{r['username']} — {r['count']} reply(s)")
+        rank_class = f"rank-{i+1}" if i < 3 else "rank-other"
+        st.markdown(f"""
+        <div class="leaderboard-card">
+            <div class="rank {rank_class}">{i+1}</div>
+            <div class="username">@{r['username']}</div>
+            <div class="count">{r['count']}</div>
+        </div>
+        """, unsafe_allow_html=True)
 
 with col_right:
-    st.subheader("📥 Replied to You")
+    st.markdown('<div class="section-header"><span class="section-icon">📥</span><h2>Replied to You</h2></div>', unsafe_allow_html=True)
     replies_from = data.get('repliesFrom', [])
     for i, r in enumerate(replies_from[:10]):
-        medal = "🥇" if i == 0 else "🥈" if i == 1 else "🥉" if i == 2 else "  "
-        st.markdown(f"{medal} **#{i+1}** @{r['username']} — {r['count']} reply(s)")
+        rank_class = f"rank-{i+1}" if i < 3 else "rank-other"
+        st.markdown(f"""
+        <div class="leaderboard-card">
+            <div class="rank {rank_class}">{i+1}</div>
+            <div class="username">@{r['username']}</div>
+            <div class="count">{r['count']}</div>
+        </div>
+        """, unsafe_allow_html=True)
 
 # Footer
-st.divider()
-st.caption(f"🕐 Last updated: {data.get('lastUpdated', 'Unknown')}")
+st.markdown(f'<footer>Last updated: {data.get("lastUpdated", "Unknown")}</footer>', unsafe_allow_html=True)
 
-# Refresh button
-if st.button("🔄 Refresh Data"):
+if st.button("🔄 Refresh"):
     st.rerun()
