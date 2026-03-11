@@ -6,34 +6,30 @@
     "following": 1166
   },
   "repliesTo": [
-    {"username": "revelinai", "count": 4},
-    {"username": "MaxVOAO", "count": 3},
-    {"username": "GlennHasABeard", "count": 3},
-    {"username": "azed_ai", "count": 3},
-    {"username": "icreatelife", "count": 3},
-    {"username": "AllaAisling", "count": 3},
-    {"username": "surrealandEth", "count": 2},
-    {"username": "karatademada", "count": 2},
-    {"username": "UmbraNexus404", "count": 2},
-    {"username": "NEXUS_TO_NOVA", "count": 2},
     {"username": "Noxifer81", "count": 2},
-    {"username": "QamarRiaz1", "count": 2},
-    {"username": "Parsifel1", "count": 2},
-    {"username": "BeanieBlossom", "count": 2},
-    {"username": "bmx_ai13", "count": 2}
+    {"username": "IamKuyikBassey", "count": 1},
+    {"username": "surrealandEth", "count": 1},
+    {"username": "karatademada", "count": 1},
+    {"username": "UmbraNexus404", "count": 1},
+    {"username": "Morning88104856", "count": 1},
+    {"username": "RichardNadler1", "count": 1},
+    {"username": "zeng_wt", "count": 1},
+    {"username": "NEXUS_TO_NOVA", "count": 1},
+    {"username": "ElaraVossAI", "count": 1},
+    {"username": "Mechanismo0", "count": 1},
+    {"username": "IamEmily2050", "count": 1}
   ],
   "repliesFrom": [
     {"username": "Noxifer81", "count": 1},
     {"username": "NEXUS_TO_NOVA", "count": 1},
     {"username": "Mechanismo0", "count": 1},
     {"username": "karatademada", "count": 1},
-    {"username": "ElaraVossAI", "count": 1},
-    {"username": "IamEmily2050", "count": 1}
+    {"username": "ElaraVossAI", "count": 1}
   ],
   "totals": {
-    "repliesSent": 92,
-    "repliesReceived": 18,
-    "uniqueEngaged": 61
+    "repliesSent": 13,
+    "repliesReceived": 5,
+    "uniqueEngaged": 12
   },
-  "lastUpdated": "2026-03-11T09:12:00Z"
+  "lastUpdated": "2026-03-11T09:27:00Z"
 }
