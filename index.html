@@ -1,113 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NotPhilSledge Analytics</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root { --bg: #0D0D0F; --bg-secondary: #18181B; --bg-tertiary: #27272A; --border: #27272A; --text: #FAFAFA; --text-secondary: #A1A1AA; --text-muted: #71717A; --purple: #8B5CF6; --purple-light: #A78BFA; --gold: #F59E0B; --silver: #9CA3AF; --bronze: #CD7F32; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
-        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
-        .logo { font-size: 28px; font-weight: 800; background: linear-gradient(90deg, #fff, #A1A1AA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .period-select { background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text); padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer; }
-        
-        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
-        .stat-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px; padding: 24px; text-align: center; }
-        .stat-value { font-size: 36px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-        .stat-label { font-size: 13px; color: var(--text-muted); text-transform: uppercase; }
-
-        .charts-row { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 32px; }
-        .chart-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
-        .chart-title { font-size: 16px; font-weight: 600; margin-bottom: 20px; }
-        .bar-chart { display: flex; align-items: flex-end; justify-content: space-between; height: 180px; padding-top: 20px; }
-        .bar-item { display: flex; flex-direction: column; align-items: center; flex: 1; }
-        .bar { width: 28px; background: linear-gradient(180deg, var(--purple) 0%, #7C3AED 100%); border-radius: 6px 6px 0 0; }
-        .bar-label { font-size: 11px; color: var(--text-muted); margin-top: 8px; }
-        .bar-value { font-size: 11px; color: var(--text); font-weight: 600; margin-bottom: 4px; }
-
-        .lists-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-        .list-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
-        .list-title { font-size: 16px; font-weight: 600; margin-bottom: 16px; }
-
-        .list-item { display: flex; align-items: center; padding: 14px; border-radius: 12px; margin-bottom: 8px; background: var(--bg-tertiary); }
-        
-        .rank { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; margin-right: 14px; flex-shrink: 0; }
-        .rank-1 { background: linear-gradient(135deg, var(--gold), #D97706); color: #000; }
-        .rank-2 { background: linear-gradient(135deg, var(--silver), #6B7280); color: #000; }
-        .rank-3 { background: linear-gradient(135deg, var(--bronze), #B45309); color: #000; }
-        .rank-other { background: var(--bg-secondary); color: var(--text-secondary); }
-
-        .pfp { width: 48px; height: 48px; border-radius: 50%; margin-right: 14px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; color: white; border: 2px solid var(--purple); }
-        
-        .user-info { flex: 1; min-width: 0; }
-        .username { font-weight: 600; font-size: 15px; text-decoration: none; color: var(--purple-light); }
-        .name { font-size: 13px; color: var(--text-secondary); display: block; margin-top: 2px; }
-        .bio { font-size: 12px; color: var(--text-muted); display: block; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        
-        .count { color: var(--purple); font-weight: 700; font-size: 16px; margin-left: 12px; }
-
-        .best-tweet { background: var(--bg-tertiary); border-radius: 12px; padding: 16px; margin-top: 16px; }
-        .best-tweet-text { font-size: 14px; margin-bottom: 12px; }
-        .best-tweet-stats { display: flex; gap: 20px; }
-        .best-tweet-stat-value { font-size: 18px; font-weight: 700; color: var(--purple); }
-        .best-tweet-stat-label { font-size: 11px; color: var(--text-muted); }
-
-        footer { text-align: center; padding: 24px; color: var(--text-muted); font-size: 13px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>NotPhilSledge</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0D0D0F;--bg2:#18181B;--bg3:#27272A;--purple:#8B5CF6;--gold:#F59E0B;--silver:#9CA3AF;--bronze:#CD7F32}
+body{font-family:Inter,sans-serif;background:var(--bg);color:#fff;margin:0;padding:20px}
+.container{max-width:1100px;margin:0 auto}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
+.stat{background:var(--bg2);border:1px solid var(--bg3);border-radius:16px;padding:20px;text-align:center}
+.statv{font-size:32px;font-weight:700}
+.statl{font-size:12px;color:#71717a;text-transform:uppercase}
+.lists{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.list{background:var(--bg2);border:1px solid var(--bg3);border-radius:16px;padding:20px}
+.list-item{display:flex;align-items:center;padding:12px;background:var(--bg3);border-radius:10px;margin-bottom:8px}
+.rank{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;margin-right:12px}
+.r1{background:linear-gradient(135deg,var(--gold),#D97706);color:#000}
+.r2{background:linear-gradient(135deg,var(--silver),#6B7280);color:#000}
+.r3{background:linear-gradient(135deg,var(--bronze),#B45309);color:#000}
+.r0{background:var(--bg2);color:#71717a}
+.pfp{width:40px;height:40px;border-radius:50%;margin-right:12px;background:var(--purple);border:2px solid var(--purple)}
+.u{font-weight:600;color:var(--purple);text-decoration:none;font-size:14px}
+.c{color:var(--purple);font-weight:700;margin-left:auto}
+h2{font-size:16px;margin-bottom:16px}
+</style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">⚡ NotPhilSledge</div>
-            <select class="period-select">
-                <option>This Week</option>
-                <option>This Month</option>
-                <option>All Time</option>
-            </select>
-        </header>
-
-        <div class="stats-grid">
-            <div class="stat-card"><div class="stat-value">98</div><div class="stat-label">Tweets</div></div>
-            <div class="stat-card"><div class="stat-value">2.5K</div><div class="stat-label">Impressions</div></div>
-            <div class="stat-card"><div class="stat-value">181</div><div class="stat-label">Engagements</div></div>
-            <div class="stat-card"><div class="stat-value">7.2%</div><div class="stat-label">Rate</div></div>
-        </div>
-
-        <div class="charts-row">
-            <div class="chart-card"><div class="chart-title">📊 Daily Engagement</div><div class="bar-chart" id="c"></div></div>
-            <div class="chart-card"><div class="chart-title">🔥 Best Tweet</div><div class="best-tweet"><div class="best-tweet-text">Thanks for the support!</div><div class="best-tweet-stats"><div><div class="best-tweet-stat-value">2.4K</div><div class="best-tweet-stat-label">Impressions</div></div></div></div></div>
-        </div>
-
-        <div class="lists-row">
-            <div class="list-card"><div class="list-title">📤 You Replied To</div><div id="r1"></div></div>
-            <div class="list-card"><div class="list-title">🔄 Reply Reciprocity</div><div id="r2"></div></div>
-        </div>
-        <footer>NotPhilSledge Analytics • March 2026</footer>
-    </div>
-
-    <script>
-        const users = {
-            'Noxifer81': 'No', 'AllaAisling': 'AA', 'Julian_cano_': 'JC', 'NEXUS_TO_NOVA': 'NX', 'MrsSpitFire252': 'MS', 'RoyalKongz': 'RK', 'revelinai': 're', 'GlennHasABeard': 'GL', 'matrixmurals': 'mt', 'DrSadek_': 'DS', 'UmbraNexus404': 'UN', 'ElaraVossAI': 'EV', 'Mechanismo0': 'Me', 'karatademada': 'ka', 'IamEmily2050': 'EM'
-        };
-        const d1 = [{u:'Noxifer81',c:5},{u:'AllaAisling',c:4},{u:'Julian_cano_',c:3},{u:'NEXUS_TO_NOVA',c:3},{u:'RoyalKongz',c:2}];
-        const d2 = [{u:'MrsSpitFire252',c:3},{u:'AllaAisling',c:2},{u:'Noxifer81',c:2}];
-        const eng = [{d:'Mon',v:45},{d:'Tue',v:62},{d:'Wed',v:38},{d:'Thu',v:85},{d:'Fri',v:72},{d:'Sat',v:28},{d:'Sun',v:15}];
-        
-        const c = document.getElementById('c');
-        const mx = Math.max(...eng.map(e=>e.v));
-        eng.forEach(e=>{c.innerHTML+=`<div class="bar-item"><div class="bar-value">${e.v}</div><div class="bar" style="height:${e.v/mx*140}px"></div><div class="bar-label">${e.d}</div></div>`});
-        
-        function r(data, id) {
-            data.forEach((x,i)=>{
-                const rc = i===0?'rank-1':i===1?'rank-2':i===2?'rank-3':'rank-other';
-                const n = users[x.u]||x.u[0]+x.u[1];
-                document.getElementById(id).innerHTML+=`<div class="list-item"><div class="rank ${rc}">${i+1}</div><div class="pfp" style="background:${i<3?'var(--gold)':'var(--purple)'}">${n}</div><div class="user-info"><a class="username" href="https://x.com/${x.u}" target="_blank">@${x.u}</a><span class="name">${x.u}</span></div><div class="count">${x.c}</div></div>`;
-            });
-        }
-        r(d1,'r1'); r(d2,'r2');
-    </script>
+<div class="container">
+<h1>NotPhilSledge Analytics</h1>
+<div class="stats">
+<div class="stat"><div class="statv">98</div><div class="statl">Tweets</div></div>
+<div class="stat"><div class="statv">2.5K</div><div class="statl">Impressions</div></div>
+<div class="stat"><div class="statv">181</div><div class="statl">Engagements</div></div>
+<div class="stat"><div class="statv">7.2%</div><div class="statl">Rate</div></div>
+</div>
+<div class="lists">
+<div class="list"><h2>You Replied To</h2><div id="r1"></div></div>
+<div class="list"><h2>Reply Reciprocity</h2><div id="r2"></div></div>
+</div>
+</div>
+<script>
+const pfps = {"Noxifer81": "/9j/4AAQSkZJRgABAQAAAQABAAD/4gKgSUNDX1BST0ZJTEUAAQEAAAKQbGNtcwQwAABtbnRyUkdCIFhZ...", "AllaAisling": "/9j/4AAQSkZJRgABAQAAAQABAAD/4gKgSUNDX1BST0ZJTEUAAQEAAAKQbGNtcwQwAABtbnRyUkdCIFhZ...", "Julian_cano_": "/9j/4AAQSkZJRgABAQAAAQABAAD/4gKgSUNDX1BST0ZJTEUAAQEAAAKQbGNtcwQwAABtbnRyUkdCIFhZ...", "NEXUS_TO_NOVA": "/9j/4AAQSkZJRgABAQAAAQABAAD/4gKgSUNDX1BST0ZJTEUAAQEAAAKQbGNtcwQwAABtbnRyUkdCIFhZ...", "MrsSpitFire252": "/9j/4AAQSkZJRgABAQAAAQABAAD/4gKgSUNDX1BST0ZJTEUAAQEAAAKQbGNtcwQwAABtbnRyUkdCIFhZ...", "RoyalKongz": "/9j/4AAQSkZJRgABAQAAAQABAAD/4gKgSUNDX1BST0ZJTEUAAQEAAAKQbGNtcwQwAABtbnRyUkdCIFhZ...", };
+const d1=[{u:"Noxifer81",c:5},{u:"AllaAisling",c:4},{u:"Julian_cano_",c:3},{u:"NEXUS_TO_NOVA",c:3},{u:"RoyalKongz",c:2}];
+const d2=[{u:"MrsSpitFire252",c:3},{u:"AllaAisling",c:2},{u:"Noxifer81",c:2}];
+function r(d,id){d.forEach((x,i)=>{const r=i===0?"r1":i===1?"r2":i===2?"r3":"r0";const p=pfps[x.u]?"background-image:url(data:image/jpeg;base64,"+pfps[x.u]+")":"background:#8B5CF6";document.getElementById(id).innerHTML+=`<div class="list-item"><div class="rank ${r}">${i+1}</div><div class="pfp" style="${p};background-size:cover"></div><a class="u" href="https://x.com/${x.u}" target="_blank">@${x.u}</a><div class="c">${x.c}</div></div>`})}
+r(d1,"r1");r(d2,"r2");
+</script>
 </body>
 </html>
