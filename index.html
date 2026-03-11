@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotPhilSledge - AI X Engagement</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0D0D0F;
+            --bg-secondary: #18181B;
+            --border: #27272A;
+            --text: #E4E4E7;
+            --text-muted: #A1A1AA;
+            --purple: #8B5CF6;
+            --purple-light: #A78BFA;
+            --purple-dark: #7C3AED;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: rgba(13, 13, 15, 0.9);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--purple), var(--purple-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 6rem 0 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, var(--purple), var(--purple-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--purple);
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Features */
+        .features {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--purple);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Dashboard Preview */
+        .dashboard-preview {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .dashboard-mockup {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .mockup-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .mockup-stat {
+            background: var(--bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .mockup-stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--purple);
+        }
+
+        .mockup-stat-label {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .mockup-leaderboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .leaderboard-section h4 {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            background: var(--bg);
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+        }
+
+        .leaderboard-rank {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            background: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.75rem;
+            margin-right: 0.75rem;
+        }
+
+        .leaderboard-rank.gold { background: linear-gradient(135deg, #F59E0B, #D97706); color: #000; }
+        .leaderboard-rank.silver { background: linear-gradient(135deg, #9CA3AF, #6B7280); color: #000; }
+        .leaderboard-rank.bronze { background: linear-gradient(135deg, #CD7F32, #B45309); color: #000; }
+
+        .leaderboard-user {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .leaderboard-count {
+            color: var(--purple);
+            font-weight: 600;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--purple);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .cta-button:hover {
+            background: var(--purple-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero-stats { flex-direction: column; gap: 1.5rem; }
+            .mockup-stats { grid-template-columns: repeat(2, 1fr); }
+            .mockup-leaderboard { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">NotPhilSledge</div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#cta">Get Started</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>AI-Powered X Engagement<br><span>On Autopilot</span></h1>
+            <p>Intelligent engagement system that finds, interacts, and grows your presence in the AI/X community. Smart replies, strategic engagement, real results.</p>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-value">16+</div>
+                    <div class="stat-label">Daily Engagements</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">15</div>
+                    <div class="stat-label">Unique Conversations</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">125%</div>
+                    <div class="stat-label">Reply Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">What It Does</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Smart Targeting</h3>
+                    <p>Identifies high-value accounts in your niche and engages with the right people at the right time.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Intelligent Replies</h3>
+                    <p>AI-generated responses that feel personal and authentic. No generic templates.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Real Analytics</h3>
+                    <p>Track every interaction, monitor engagement rates, and see exactly what's working.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Safe & Compliant</h3>
+                    <p>Built-in rate limiting and ethical engagement rules keep your account safe.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>24/7 Automation</h3>
+                    <p>Works while you sleep. Consistent engagement that never stops.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎭</div>
+                    <h3>British Persona</h3>
+                    <p>Authentic British voice that stands out. No hype, no emojis, just substance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dashboard-preview" id="dashboard">
+        <div class="container">
+            <h2 class="section-title">Live Dashboard</h2>
+            <div class="dashboard-mockup">
+                <div class="mockup-stats">
+                    <div class="mockup-stat">
+                        <div class="mockup-stat-value">16</div>
+                        <div class="mockup-stat-label">Replies Sent</div>
+                    </div>
+                    <div class="mockup-stat">
+                        <div class="mockup-stat-value">20</div>
+                        <div class="mockup-stat-label">Replies Received</div>
+                    </div>
+                    <div class="mockup-stat">
+                        <div class="mockup-stat-value">15</div>
+                        <div class="mockup-stat-label">Unique</div>
+                    </div>
+                    <div class="mockup-stat">
+                        <div class="mockup-stat-value">125%</div>
+                        <div class="mockup-stat-label">Rate</div>
+                    </div>
+                </div>
+                <div class="mockup-leaderboard">
+                    <div class="leaderboard-section">
+                        <h4>Top Replied</h4>
+                        <div class="leaderboard-item">
+                            <span class="leaderboard-rank gold">1</span>
+                            <span class="leaderboard-user">@MrsSpitFire252</span>
+                            <span class="leaderboard-count">5</span>
+                        </div>
+                        <div class="leaderboard-item">
+                            <span class="leaderboard-rank silver">2</span>
+                            <span class="leaderboard-user">@AllaAisling</span>
+                            <span class="leaderboard-count">4</span>
+                        </div>
+                        <div class="leaderboard-item">
+                            <span class="leaderboard-rank bronze">3</span>
+                            <span class="leaderboard-user">@Julian_cano_</span>
+                            <span class="leaderboard-count">3</span>
+                        </div>
+                    </div>
+                    <div class="leaderboard-section">
+                        <h4>Top Engaging</h4>
+                        <div class="leaderboard-item">
+                            <span class="leaderboard-rank gold">1</span>
+                            <span class="leaderboard-user">@NEXUS_TO_NOVA</span>
+                            <span class="leaderboard-count">3</span>
+                        </div>
+                        <div class="leaderboard-item">
+                            <span class="leaderboard-rank silver">2</span>
+                            <span class="leaderboard-user">@RoyalKongz</span>
+                            <span class="leaderboard-count">3</span>
+                        </div>
+                        <div class="leaderboard-item">
+                            <span class="leaderboard-rank bronze">3</span>
+                            <span class="leaderboard-user">@Noxifer81</span>
+                            <span class="leaderboard-count">3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="cta">
+        <div class="container">
+            <h2>Ready to Scale?</h2>
+            <p>Join the AI community engagement revolution.</p>
+            <a href="https://x.com/NotPhilSledge" class="cta-button">Follow on X</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built with OpenClaw ⚡</p>
+        </div>
+    </footer>
+</body>
+</html>
