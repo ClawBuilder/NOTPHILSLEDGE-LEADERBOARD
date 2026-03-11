@@ -20,7 +20,7 @@ body{font-family:Inter,sans-serif;background:var(--bg);color:var(--text);margin:
 .r2{background:linear-gradient(135deg,var(--silver),#6B7280);color:#000}
 .r3{background:linear-gradient(135deg,var(--bronze),#B45309);color:#000}
 .r0{background:var(--bg2);color:var(--muted)}
-.p{width:48px;height:48px;border-radius:50%;margin-right:14px;background:var(--purple);border:2px solid var(--purple);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:#fff}
+.p{width:48px;height:48px;border-radius:50%;margin-right:14px;background:var(--purple);border:2px solid var(--purple);object-fit:cover}
 .u{font-weight:600;color:var(--purple);text-decoration:none;font-size:15px}
 .c2{color:var(--purple);font-weight:700;margin-left:auto}
 h2{font-size:16px;margin-bottom:16px}
@@ -56,10 +56,14 @@ ftr{text-align:center;padding:20px;color:var(--muted);font-size:13px}
 <ftr>NotPhilSledge Analytics - March 2026</ftr>
 </div>
 <script>
-const users={"Noxifer81":"NO","AllaAisling":"AA","Julian_cano_":"JC","NEXUS_TO_NOVA":"NX","MrsSpitFire252":"MS","RoyalKongz":"RK","revelinai":"re","GlennHasABeard":"GL","matrixmurals":"MT","DrSadek_":"DS","UmbraNexus404":"UN","ElaraVossAI":"EV","Mechanismo0":"ME","karatademada":"KA","IamEmily2050":"EM"};
-
-const d1=[{u:"Noxifer81",c:5},{u:"AllaAisling",c:4},{u:"Julian_cano_",c:3},{u:"NEXUS_TO_NOVA",c:3},{u:"RoyalKongz",c:2},{u:"revelinai",c:2},{u:"GlennHasABeard",c:2},{u:"matrixmurals",c:1},{u:"DrSadek_",c:1},{u:"UmbraNexus404",c:1}];
-const d2=[{u:"MrsSpitFire252",c:3},{u:"AllaAisling",c:2},{u:"Noxifer81",c:2},{u:"NEXUS_TO_NOVA",c:1},{u:"ElaraVossAI",c:1},{u:"Mechanismo0",c:1},{u:"karatademada",c:1},{u:"IamEmily2050",c:1}];
+const d1=[
+{u:"Noxifer81",c:5},{u:"AllaAisling",c:4},{u:"Julian_cano_",c:3},{u:"NEXUS_TO_NOVA",c:3},
+{u:"RoyalKongz",c:2},{u:"revelinai",c:2},{u:"GlennHasABeard",c:2},{u:"matrixmurals",c:1},{u:"DrSadek_",c:1},{u:"UmbraNexus404",c:1}
+];
+const d2=[
+{u:"MrsSpitFire252",c:3},{u:"AllaAisling",c:2},{u:"Noxifer81",c:2},
+{u:"NEXUS_TO_NOVA",c:1},{u:"ElaraVossAI",c:1},{u:"Mechanismo0",c:1},{u:"karatademada",c:1},{u:"IamEmily2050",c:1}
+];
 const eng=[{d:"Mon",v:45},{d:"Tue",v:62},{d:"Wed",v:38},{d:"Thu",v:85},{d:"Fri",v:72},{d:"Sat",v:28},{d:"Sun",v:15}];
 
 const mx=Math.max(...eng.map(e=>e.v));
@@ -68,9 +72,7 @@ document.getElementById("chart").innerHTML=eng.map(e=>`<div class="bi"><div clas
 function r(d,id){
 document.getElementById(id).innerHTML=d.map((x,i)=>{
 const rc=i===0?"r1":i===1?"r2":i===2?"r3":"r0";
-const init=users[x.u]||x.u[0]+x.u[1];
-const bg=i<3?"var(--gold)":"var(--purple)";
-return `<div class="li"><div class="rk ${rc}">${i+1}</div><div class="p" style="background:${bg}">${init}</div><a class="u" href="https://x.com/${x.u}" target="_blank">@${x.u}</a><div class="c2">${x.c}</div></div>`;
+return `<div class="li"><div class="rk ${rc}">${i+1}</div><img class="p" src="https://unavatar.io/twitter/${x.u}"><a class="u" href="https://x.com/${x.u}" target="_blank">@${x.u}</a><div class="c2">${x.c}</div></div>`;
 }).join("");
 }
 r(d1,"r1");r(d2,"r2");
