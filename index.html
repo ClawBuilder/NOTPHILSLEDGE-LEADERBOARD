@@ -3,50 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NotPhilSledge - AI X Engagement</title>
+    <title>NotPhilSledge - X Analytics Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         :root {
             --bg: #0D0D0F;
-            --bg-secondary: #18181B;
+            --bg-elevated: #18181B;
             --border: #27272A;
-            --text: #E4E4E7;
-            --text-muted: #A1A1AA;
+            --text: #FAFAFA;
+            --text-secondary: #A1A1AA;
+            --text-muted: #71717A;
             --purple: #8B5CF6;
             --purple-light: #A78BFA;
             --purple-dark: #7C3AED;
         }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 24px;
         }
 
         /* Header */
         header {
-            padding: 1.5rem 0;
-            border-bottom: 1px solid var(--border);
-            position: sticky;
+            position: fixed;
             top: 0;
-            background: rgba(13, 13, 15, 0.9);
-            backdrop-filter: blur(12px);
+            left: 0;
+            right: 0;
             z-index: 100;
+            background: rgba(13, 13, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
         }
 
         nav {
@@ -56,101 +56,197 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 20px;
             font-weight: 800;
-            background: linear-gradient(90deg, var(--purple), var(--purple-light));
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #fff 0%, #A1A1AA 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 32px;
             list-style: none;
         }
 
         .nav-links a {
-            color: var(--text-muted);
+            color: var(--text-secondary);
             text-decoration: none;
+            font-size: 14px;
             font-weight: 500;
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
-            color: var(--text);
+        .nav-links a:hover { color: var(--text); }
+
+        .nav-cta {
+            background: var(--purple);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
         }
+
+        .nav-cta:hover { background: var(--purple-dark); }
 
         /* Hero */
         .hero {
-            padding: 6rem 0 4rem;
+            padding: 180px 0 120px;
             text-align: center;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
         }
 
-        .hero h1 span {
-            background: linear-gradient(90deg, var(--purple), var(--purple-light));
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            background: #22C55E;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, var(--purple) 0%, var(--purple-light) 50%, #C4B5FD 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
+            font-size: 20px;
+            color: var(--text-secondary);
             max-width: 600px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 40px;
+            line-height: 1.6;
         }
 
-        .hero-stats {
+        .hero-buttons {
             display: flex;
             justify-content: center;
-            gap: 3rem;
-            margin-top: 3rem;
+            gap: 16px;
         }
 
-        .stat {
-            text-align: center;
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
         }
+
+        .btn-primary {
+            background: var(--purple);
+            color: #fff;
+        }
+
+        .btn-primary:hover { background: var(--purple-dark); transform: translateY(-1px); }
+
+        .btn-secondary {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .btn-secondary:hover { border-color: var(--text-secondary); }
+
+        /* Stats */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 64px;
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-elevated);
+        }
+
+        .stat-item { text-align: center; }
 
         .stat-value {
-            font-size: 2.5rem;
+            font-size: 36px;
             font-weight: 700;
-            color: var(--purple);
+            color: var(--text);
+            letter-spacing: -0.02em;
         }
 
         .stat-label {
+            font-size: 14px;
             color: var(--text-muted);
-            font-size: 0.875rem;
+            margin-top: 4px;
         }
 
         /* Features */
-        .features {
-            padding: 4rem 0;
-        }
+        .features { padding: 120px 0; }
 
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
+        .section-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 80px;
         }
 
-        .features-grid {
+        .section-header h2 {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
         }
 
         .feature-card {
-            background: var(--bg-secondary);
+            background: var(--bg-elevated);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
+            border-radius: 20px;
+            padding: 40px;
             transition: all 0.3s;
         }
 
@@ -160,158 +256,181 @@
         }
 
         .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            width: 48px;
+            height: 48px;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
 
         .feature-card h3 {
-            font-size: 1.25rem;
+            font-size: 20px;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 12px;
         }
 
         .feature-card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.6;
         }
 
         /* Dashboard Preview */
-        .dashboard-preview {
-            padding: 4rem 0;
-            text-align: center;
+        .dashboard-section {
+            padding: 120px 0;
+            background: var(--bg-elevated);
         }
 
         .dashboard-mockup {
-            background: var(--bg-secondary);
+            background: var(--bg);
             border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-top: 2rem;
-            text-align: left;
+            border-radius: 24px;
+            padding: 32px;
+            margin-top: 60px;
+            box-shadow: 0 0 0 1px rgba(255,255,255,0.05), 0 50px 100px -20px rgba(0,0,0,0.5);
+        }
+
+        .mockup-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+        }
+
+        .mockup-user {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .mockup-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--purple), var(--purple-light));
+            border-radius: 10px;
+        }
+
+        .mockup-name {
+            font-weight: 600;
+        }
+
+        .mockup-handle {
+            color: var(--text-muted);
+            font-size: 14px;
         }
 
         .mockup-stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-bottom: 2rem;
+            gap: 16px;
+            margin-bottom: 32px;
         }
 
         .mockup-stat {
-            background: var(--bg);
-            border-radius: 12px;
-            padding: 1.5rem;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
             text-align: center;
         }
 
         .mockup-stat-value {
-            font-size: 1.75rem;
+            font-size: 32px;
             font-weight: 700;
             color: var(--purple);
         }
 
         .mockup-stat-label {
             color: var(--text-muted);
-            font-size: 0.75rem;
-            text-transform: uppercase;
+            font-size: 13px;
+            margin-top: 4px;
         }
 
-        .mockup-leaderboard {
+        .mockup-leaderboards {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            gap: 24px;
         }
 
         .leaderboard-section h4 {
+            font-size: 13px;
+            font-weight: 600;
             color: var(--text-muted);
-            font-size: 0.75rem;
             text-transform: uppercase;
-            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
         }
 
         .leaderboard-item {
             display: flex;
             align-items: center;
-            padding: 0.75rem;
-            background: var(--bg);
-            border-radius: 8px;
-            margin-bottom: 0.5rem;
+            gap: 12px;
+            padding: 12px;
+            background: var(--bg-elevated);
+            border-radius: 12px;
+            margin-bottom: 8px;
+            transition: background 0.2s;
         }
+
+        .leaderboard-item:hover { background: var(--border); }
 
         .leaderboard-rank {
             width: 28px;
             height: 28px;
-            border-radius: 6px;
-            background: var(--border);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 600;
-            font-size: 0.75rem;
-            margin-right: 0.75rem;
+            font-weight: 700;
+            font-size: 12px;
         }
 
-        .leaderboard-rank.gold { background: linear-gradient(135deg, #F59E0B, #D97706); color: #000; }
-        .leaderboard-rank.silver { background: linear-gradient(135deg, #9CA3AF, #6B7280); color: #000; }
-        .leaderboard-rank.bronze { background: linear-gradient(135deg, #CD7F32, #B45309); color: #000; }
+        .rank-1 { background: linear-gradient(135deg, #F59E0B, #D97706); color: #000; }
+        .rank-2 { background: linear-gradient(135deg, #9CA3AF, #6B7280); color: #000; }
+        .rank-3 { background: linear-gradient(135deg, #CD7F32, #B45309); color: #000; }
+        .rank-other { background: var(--border); color: var(--text-muted); }
 
-        .leaderboard-user {
-            flex: 1;
-            font-weight: 500;
-        }
-
-        .leaderboard-count {
-            color: var(--purple);
-            font-weight: 600;
-        }
+        .leaderboard-user { flex: 1; font-weight: 500; font-size: 14px; }
+        .leaderboard-count { color: var(--purple); font-weight: 600; font-size: 14px; }
 
         /* CTA */
-        .cta {
-            padding: 6rem 0;
+        .cta-section {
+            padding: 120px 0;
             text-align: center;
         }
 
-        .cta h2 {
-            font-size: 2.5rem;
+        .cta-section h2 {
+            font-size: 48px;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 20px;
         }
 
-        .cta p {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--purple);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 12px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-
-        .cta-button:hover {
-            background: var(--purple-dark);
-            transform: translateY(-2px);
+        .cta-section p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
         }
 
         /* Footer */
         footer {
-            padding: 2rem 0;
+            padding: 40px 0;
             border-top: 1px solid var(--border);
             text-align: center;
             color: var(--text-muted);
-            font-size: 0.875rem;
+            font-size: 14px;
         }
 
+        /* Mobile */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero-stats { flex-direction: column; gap: 1.5rem; }
+            .hero h1 { font-size: 40px; }
+            .stats-bar { flex-wrap: wrap; gap: 32px; }
+            .feature-grid { grid-template-columns: 1fr; }
             .mockup-stats { grid-template-columns: repeat(2, 1fr); }
-            .mockup-leaderboard { grid-template-columns: 1fr; }
+            .mockup-leaderboards { grid-template-columns: 1fr; }
             .nav-links { display: none; }
         }
     </style>
@@ -321,79 +440,99 @@
         <div class="container">
             <nav>
                 <div class="logo">NotPhilSledge</div>
-                <ul class="nav-links">
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#dashboard">Dashboard</a></li>
-                    <li><a href="#cta">Get Started</a></li>
-                </ul>
+                <div class="nav-right">
+                    <ul class="nav-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#dashboard">Dashboard</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                    </ul>
+                    <a href="https://x.com/NotPhilSledge" class="nav-cta" target="_blank">Follow on X</a>
+                </div>
             </nav>
         </div>
     </header>
 
     <section class="hero">
         <div class="container">
-            <h1>AI-Powered X Engagement<br><span>On Autopilot</span></h1>
-            <p>Intelligent engagement system that finds, interacts, and grows your presence in the AI/X community. Smart replies, strategic engagement, real results.</p>
-            
-            <div class="hero-stats">
-                <div class="stat">
-                    <div class="stat-value">16+</div>
-                    <div class="stat-label">Daily Engagements</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">15</div>
-                    <div class="stat-label">Unique Conversations</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">125%</div>
-                    <div class="stat-label">Reply Rate</div>
-                </div>
+            <div class="badge">
+                <span class="badge-dot"></span>
+                Live Dashboard
+            </div>
+            <h1>Your X Engagement<br><span class="gradient">Stats, Demystified</span></h1>
+            <p>Beautiful analytics for your X presence. Track replies, monitor engagement, and understand your audience — without the automation hype.</p>
+            <div class="hero-buttons">
+                <a href="#dashboard" class="btn btn-primary">View Dashboard →</a>
+                <a href="https://x.com/NotPhilSledge" class="btn btn-secondary" target="_blank">@NotPhilSledge</a>
             </div>
         </div>
     </section>
+
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-value">16</div>
+            <div class="stat-label">Replies Sent</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">20</div>
+            <div class="stat-label">Replies Received</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">15</div>
+            <div class="stat-label">Unique Accounts</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">125%</div>
+            <div class="stat-label">Reply Rate</div>
+        </div>
+    </div>
 
     <section class="features" id="features">
         <div class="container">
-            <h2 class="section-title">What It Does</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Smart Targeting</h3>
-                    <p>Identifies high-value accounts in your niche and engages with the right people at the right time.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💬</div>
-                    <h3>Intelligent Replies</h3>
-                    <p>AI-generated responses that feel personal and authentic. No generic templates.</p>
-                </div>
+            <div class="section-header">
+                <h2>Know Your Audience</h2>
+                <p>Detailed analytics that help you understand what's working — no guesswork required.</p>
+            </div>
+            <div class="feature-grid">
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
-                    <h3>Real Analytics</h3>
-                    <p>Track every interaction, monitor engagement rates, and see exactly what's working.</p>
+                    <h3>Real-time Stats</h3>
+                    <p>See your exact reply rate, unique engagements, and conversation depth at a glance. Updated live.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Safe & Compliant</h3>
-                    <p>Built-in rate limiting and ethical engagement rules keep your account safe.</p>
+                    <div class="feature-icon">👥</div>
+                    <h3>Who Replies to You</h3>
+                    <p>Track who engages back. Find your biggest supporters and nurture those relationships.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>24/7 Automation</h3>
-                    <p>Works while you sleep. Consistent engagement that never stops.</p>
+                    <div class="feature-icon">📈</div>
+                    <h3>Engagement Trends</h3>
+                    <p>Understand patterns over time. See which conversations drive the most value.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🎭</div>
-                    <h3>British Persona</h3>
-                    <p>Authentic British voice that stands out. No hype, no emojis, just substance.</p>
+                    <div class="feature-icon">🎯</div>
+                    <h3>Top Conversations</h3>
+                    <p>Your most active threads, ranked. Know exactly who you're talking to most.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="dashboard-preview" id="dashboard">
+    <section class="dashboard-section" id="dashboard">
         <div class="container">
-            <h2 class="section-title">Live Dashboard</h2>
+            <div class="section-header">
+                <h2>Your Dashboard</h2>
+                <p>Clean, focused, and built for humans who actually care about quality over quantity.</p>
+            </div>
             <div class="dashboard-mockup">
+                <div class="mockup-header">
+                    <div class="mockup-user">
+                        <div class="mockup-avatar"></div>
+                        <div>
+                            <div class="mockup-name">NotPhilSledge</div>
+                            <div class="mockup-handle">@NotPhilSledge</div>
+                        </div>
+                    </div>
+                </div>
                 <div class="mockup-stats">
                     <div class="mockup-stat">
                         <div class="mockup-stat-value">16</div>
@@ -409,43 +548,43 @@
                     </div>
                     <div class="mockup-stat">
                         <div class="mockup-stat-value">125%</div>
-                        <div class="mockup-stat-label">Rate</div>
+                        <div class="mockup-stat-label">Reply Rate</div>
                     </div>
                 </div>
-                <div class="mockup-leaderboard">
+                <div class="mockup-leaderboards">
                     <div class="leaderboard-section">
-                        <h4>Top Replied</h4>
+                        <h4>You Replied To</h4>
                         <div class="leaderboard-item">
-                            <span class="leaderboard-rank gold">1</span>
+                            <span class="leaderboard-rank rank-1">1</span>
                             <span class="leaderboard-user">@MrsSpitFire252</span>
                             <span class="leaderboard-count">5</span>
                         </div>
                         <div class="leaderboard-item">
-                            <span class="leaderboard-rank silver">2</span>
+                            <span class="leaderboard-rank rank-2">2</span>
                             <span class="leaderboard-user">@AllaAisling</span>
                             <span class="leaderboard-count">4</span>
                         </div>
                         <div class="leaderboard-item">
-                            <span class="leaderboard-rank bronze">3</span>
+                            <span class="leaderboard-rank rank-3">3</span>
                             <span class="leaderboard-user">@Julian_cano_</span>
                             <span class="leaderboard-count">3</span>
                         </div>
                     </div>
                     <div class="leaderboard-section">
-                        <h4>Top Engaging</h4>
+                        <h4>Replied to You</h4>
                         <div class="leaderboard-item">
-                            <span class="leaderboard-rank gold">1</span>
-                            <span class="leaderboard-user">@NEXUS_TO_NOVA</span>
-                            <span class="leaderboard-count">3</span>
+                            <span class="leaderboard-rank rank-1">1</span>
+                            <span class="leaderboard-user">@MrsSpitFire252</span>
+                            <span class="leaderboard-count">5</span>
                         </div>
                         <div class="leaderboard-item">
-                            <span class="leaderboard-rank silver">2</span>
-                            <span class="leaderboard-user">@RoyalKongz</span>
-                            <span class="leaderboard-count">3</span>
+                            <span class="leaderboard-rank rank-2">2</span>
+                            <span class="leaderboard-user">@AllaAisling</span>
+                            <span class="leaderboard-count">4</span>
                         </div>
                         <div class="leaderboard-item">
-                            <span class="leaderboard-rank bronze">3</span>
-                            <span class="leaderboard-user">@Noxifer81</span>
+                            <span class="leaderboard-rank rank-3">3</span>
+                            <span class="leaderboard-user">@Julian_cano_</span>
                             <span class="leaderboard-count">3</span>
                         </div>
                     </div>
@@ -454,17 +593,17 @@
         </div>
     </section>
 
-    <section class="cta" id="cta">
+    <section class="cta-section" id="pricing">
         <div class="container">
-            <h2>Ready to Scale?</h2>
-            <p>Join the AI community engagement revolution.</p>
-            <a href="https://x.com/NotPhilSledge" class="cta-button">Follow on X</a>
+            <h2>Ready to See Your Stats?</h2>
+            <p>No automation. No bots. Just real engagement data.</p>
+            <a href="https://notphilsledge-leaderboard-wzkcjnvi7sgexabgeg82p7.streamlit.app" class="btn btn-primary" target="_blank">Open Dashboard →</a>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>Built with OpenClaw ⚡</p>
+            <p>NotPhilSledge — Built with OpenClaw ⚡</p>
         </div>
     </footer>
 </body>
