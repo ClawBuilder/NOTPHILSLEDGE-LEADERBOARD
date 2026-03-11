@@ -3,6 +3,14 @@ import json
 
 st.set_page_config(page_title="NotPhilSledge Leaderboard", page_icon="⚡")
 
+# Initialize session state for filter
+if 'filter' not in st.session_state:
+    st.session_state.filter = "All Time"
+
+# Avatar helper
+def get_avatar(username):
+    return f"https://unavatar.io/x/{username}?fallback=https://api.dicebear.com/7.x/initials/svg?seed={username}&backgroundColor=8B5CF6"
+
 # Load data
 try:
     with open('data.json', 'r') as f:
@@ -11,21 +19,17 @@ except FileNotFoundError:
     st.error("data.json not found!")
     st.stop()
 
-# Avatar helper
-def get_avatar(username):
-    return f"https://unavatar.io/x/{username}?fallback=https://api.dicebear.com/7.x/initials/svg?seed={username}&backgroundColor=8B5CF6"
-
 st.title("🏆 NotPhilSledge Leaderboard")
 
-# Filter buttons
-cols = st.columns(4)
-filters = ["Today", "This Week", "This Month", "All Time"]
-for i, f in enumerate(filters):
-    with cols[i]:
-        if st.button(f, key=f):
-            pass
+# Filter buttons (using radio for single selection)
+filter_option = st.radio(
+    "Time Period",
+    ["Today", "This Week", "This Month", "All Time"],
+    horizontal=True,
+    label_visibility="collapsed"
+)
 
-# Stats
+# Stats (same for now - would filter in full version)
 t = data['totals']
 rate = round((t['repliesReceived'] / t['repliesSent']) * 100) if t['repliesSent'] else 0
 
