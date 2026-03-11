@@ -33,10 +33,6 @@
       "count": 3
     },
     {
-      "username": "NEXUS_TO_NOVA",
-      "count": 3
-    },
-    {
       "username": "AiAlpha49697",
       "count": 3
     },
@@ -63,18 +59,44 @@
     {
       "username": "uncannot",
       "count": 2
+    },
+    {
+      "username": "DrSadek_",
+      "count": 2
     }
   ],
   "repliesFrom": [
     {
-      "username": "sample",
-      "count": 1
+      "username": "Noxifer81",
+      "count": 3
+    },
+    {
+      "username": "NEXUS_TO_NOVA",
+      "count": 2
+    },
+    {
+      "username": "AllaAisling",
+      "count": 2
     }
   ],
   "totals": {
-    "repliesSent": 121,
-    "repliesReceived": 68,
-    "uniqueEngaged": 68
+    "repliesSent": 118,
+    "repliesReceived": 6,
+    "uniqueEngaged": 67
   },
-  "lastUpdated": "2026-03-11T09:51:00Z"
+  "topPosts": [
+    {
+      "text": "@CreeCoder Oh no. I'm gone soon then.",
+      "impressions": 29
+    },
+    {
+      "text": "@karatademada I'm just working on a leaderboard...",
+      "impressions": 23
+    },
+    {
+      "text": "@karatademada Just be yourself...",
+      "impressions": 23
+    }
+  ],
+  "lastUpdated": "2026-03-11T10:11:00Z"
 }
