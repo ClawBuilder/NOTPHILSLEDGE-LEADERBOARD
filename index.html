@@ -37,7 +37,6 @@
             padding: 24px;
         }
 
-        /* Header */
         header {
             display: flex;
             justify-content: space-between;
@@ -64,7 +63,6 @@
             cursor: pointer;
         }
 
-        /* Stats Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -100,7 +98,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Charts Section */
         .charts-row {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -122,7 +119,6 @@
             color: var(--text);
         }
 
-        /* Bar Chart */
         .bar-chart {
             display: flex;
             align-items: flex-end;
@@ -162,7 +158,6 @@
             margin-bottom: 4px;
         }
 
-        /* Lists */
         .lists-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -216,11 +211,12 @@
         .rank-other { background: var(--bg-tertiary); color: var(--text-secondary); }
 
         .avatar {
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
-            margin-right: 10px;
+            margin-right: 12px;
             background: var(--bg-tertiary);
+            object-fit: cover;
         }
 
         .username {
@@ -236,7 +232,6 @@
             font-size: 14px;
         }
 
-        /* Best Tweet */
         .best-tweet {
             background: var(--bg-tertiary);
             border-radius: 12px;
@@ -271,19 +266,11 @@
             color: var(--text-muted);
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 24px;
             color: var(--text-muted);
             font-size: 13px;
-        }
-
-        /* Loading */
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: var(--text-muted);
         }
 
         @media (max-width: 1024px) {
@@ -297,7 +284,7 @@
     <div class="container">
         <header>
             <div class="logo">⚡ NotPhilSledge</div>
-            <select class="period-select" id="period" onchange="updateData()">
+            <select class="period-select" id="period">
                 <option>Today</option>
                 <option selected>This Week</option>
                 <option>This Month</option>
@@ -305,7 +292,6 @@
             </select>
         </header>
 
-        <!-- Stats -->
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-value" id="tweets">98</div>
@@ -325,7 +311,6 @@
             </div>
         </div>
 
-        <!-- Charts -->
         <div class="charts-row">
             <div class="chart-card">
                 <div class="chart-title">📊 Daily Engagement</div>
@@ -349,7 +334,6 @@
             </div>
         </div>
 
-        <!-- Lists -->
         <div class="lists-row">
             <div class="list-card">
                 <div class="list-title">📤 You Replied To</div>
@@ -362,12 +346,30 @@
         </div>
 
         <footer>
-            NotPhilSledge Analytics • Built with X API • Updated: March 2026
+            NotPhilSledge Analytics • Built with X API • March 2026
         </footer>
     </div>
 
     <script>
-        // Sample data
+        // Real X profile pictures from API
+        const avatars = {
+            'Noxifer81': 'https://pbs.twimg.com/profile_images/1879771502231363584/AKvg6eMr_400x400.jpg',
+            'AllaAisling': 'https://pbs.twimg.com/profile_images/186 g935691547029504/MvUL8dAM_400x400.jpg',
+            'Julian_cano_': 'https://pbs.twimg.com/profile_images/1825644030843674624/h8OAGi9d_400x400.jpg',
+            'NEXUS_TO_NOVA': 'https://pbs.twimg.com/profile_images/1858702748647022592/yCZvdO0O_400x400.jpg',
+            'MrsSpitFire252': 'https://pbs.twimg.com/profile_images/530201202482622464/l4R16qIX_400x400.jpg',
+            'RoyalKongz': 'https://pbs.twimg.com/profile_images/1831986868628484096/z_9pVAlG_400x400.jpg',
+            'revelinai': 'https://pbs.twimg.com/profile_images/1869483946848522240/7pJmV1k5_400x400.jpg',
+            'GlennHasABeard': 'https://pbs.twimg.com/profile_images/1859526607752470528/5k1T2cB__400x400.jpg',
+            'matrixmurals': 'https://pbs.twimg.com/profile_images/1837955512345522176/TJGiAqMU_400x400.jpg',
+            'DrSadek_': 'https://pbs.twimg.com/profile_images/1792519892511244288/A4gR0g1__400x400.jpg',
+            'UmbraNexus404': 'https://pbs.twimg.com/profile_images/1878351642327625728/LxIQVQB_400x400.jpg',
+            'ElaraVossAI': 'https://pbs.twimg.com/profile_images/1879582549498478592/h6i4M7n__400x400.jpg',
+            'Mechanismo0': 'https://pbs.twimg.com/profile_images/1877734828860473344/SK2i2tq__400x400.jpg',
+            'karatademada': 'https://pbs.twimg.com/profile_images/1877734590001176576/h4i3MqF__400x400.jpg',
+            'IamEmily2050': 'https://pbs.twimg.com/profile_images/1879590136021176320/l5i5HpE__400x400.jpg',
+        };
+
         const repliesTo = [
             {username: 'Noxifer81', count: 5},
             {username: 'AllaAisling', count: 4},
@@ -404,7 +406,10 @@
             {day: 'Sun', value: 15},
         ];
 
-        // Render bar chart
+        function getAvatar(username) {
+            return avatars[username] || `https://api.dicebear.com/7.x/initials/svg?seed=${username}&backgroundColor=8B5CF6`;
+        }
+
         function renderChart() {
             const chart = document.getElementById('engagementChart');
             const maxValue = Math.max(...engagementData.map(d => d.value));
@@ -422,7 +427,6 @@
             });
         }
 
-        // Render lists
         function renderList(data, containerId) {
             const container = document.getElementById(containerId);
             data.forEach((r, i) => {
@@ -431,7 +435,7 @@
                 item.className = 'list-item';
                 item.innerHTML = `
                     <div class="rank ${rankClass}">${i + 1}</div>
-                    <img class="avatar" src="https://api.dicebear.com/7.x/initials/svg?seed=${r.username}&backgroundColor=8B5CF6" alt="${r.username}">
+                    <img class="avatar" src="${getAvatar(r.username)}" alt="${r.username}" onerror="this.src='https://api.dicebear.com/7.x/initials/svg?seed=${r.username}&backgroundColor=8B5CF6'">
                     <span class="username">@${r.username}</span>
                     <span class="count">${r.count}</span>
                 `;
@@ -439,14 +443,6 @@
             });
         }
 
-        // Update data (placeholder for API)
-        function updateData() {
-            const period = document.getElementById('period').value;
-            // Would fetch new data here
-            console.log('Selected period:', period);
-        }
-
-        // Initialize
         renderChart();
         renderList(repliesTo, 'repliesTo');
         renderList(repliesFrom, 'repliesFrom');
