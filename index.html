@@ -6,29 +6,14 @@
     <title>NotPhilSledge Analytics</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg: #0D0D0F;
-            --bg-secondary: #18181B;
-            --bg-tertiary: #27272A;
-            --border: #27272A;
-            --text: #FAFAFA;
-            --text-secondary: #A1A1AA;
-            --text-muted: #71717A;
-            --purple: #8B5CF6;
-            --purple-light: #A78BFA;
-            --gold: #F59E0B;
-            --silver: #9CA3AF;
-            --bronze: #CD7F32;
-        }
-
+        :root { --bg: #0D0D0F; --bg-secondary: #18181B; --bg-tertiary: #27272A; --border: #27272A; --text: #FAFAFA; --text-secondary: #A1A1AA; --text-muted: #71717A; --purple: #8B5CF6; --purple-light: #A78BFA; --gold: #F59E0B; --silver: #9CA3AF; --bronze: #CD7F32; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
         .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
         header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
         .logo { font-size: 28px; font-weight: 800; background: linear-gradient(90deg, #fff, #A1A1AA); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
         .period-select { background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text); padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer; }
+        
         .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
         .stat-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px; padding: 24px; text-align: center; transition: all 0.2s; }
         .stat-card:hover { border-color: var(--purple); transform: translateY(-2px); }
@@ -38,7 +23,6 @@
         .charts-row { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 32px; }
         .chart-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
         .chart-title { font-size: 16px; font-weight: 600; margin-bottom: 20px; color: var(--text); }
-
         .bar-chart { display: flex; align-items: flex-end; justify-content: space-between; height: 180px; padding-top: 20px; }
         .bar-item { display: flex; flex-direction: column; align-items: center; flex: 1; }
         .bar { width: 28px; background: linear-gradient(180deg, var(--purple) 0%, #7C3AED 100%); border-radius: 6px 6px 0 0; }
@@ -47,7 +31,7 @@
 
         .lists-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         .list-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
-        .list-title { font-size: 16px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .list-title { font-size: 16px; font-weight: 600; margin-bottom: 16px; }
 
         .list-item { display: flex; align-items: center; padding: 14px; border-radius: 12px; margin-bottom: 8px; background: var(--bg-tertiary); }
         .list-item:hover { background: #323238; }
@@ -58,11 +42,12 @@
         .rank-3 { background: linear-gradient(135deg, var(--bronze), #B45309); color: #000; }
         .rank-other { background: var(--bg-secondary); color: var(--text-secondary); }
 
-        .avatar { width: 48px; height: 48px; border-radius: 50%; margin-right: 14px; flex-shrink: 0; background: var(--purple); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px; color: white; border: 2px solid var(--purple); }
+        .pfp { width: 48px; height: 48px; border-radius: 50%; margin-right: 14px; flex-shrink: 0; object-fit: cover; border: 2px solid var(--purple); background: var(--bg-secondary); }
         
         .user-info { flex: 1; min-width: 0; }
-        .username { font-weight: 600; color: var(--text); font-size: 15px; display: block; }
-        .name { font-size: 13px; color: var(--purple-light); display: block; margin-top: 2px; }
+        .username { font-weight: 600; font-size: 15px; display: block; text-decoration: none; color: var(--purple-light); }
+        .username:hover { text-decoration: underline; }
+        .name { font-size: 13px; color: var(--text-secondary); display: block; margin-top: 2px; }
         .bio { font-size: 12px; color: var(--text-muted); display: block; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         
         .count { color: var(--purple); font-weight: 700; font-size: 16px; margin-left: 12px; flex-shrink: 0; }
@@ -128,47 +113,33 @@
 
     <script>
         const userData = {
-            'Noxifer81': { name: 'Noxifer', bio: '🦇🖤 I just share my AI creations 🖤🦇 #Freepik Creative Partner' },
-            'AllaAisling': { name: 'Alexandra Aisling', bio: 'AI Creator, redefining the boundaries of AI-generated art' },
-            'Julian_cano_': { name: 'Julian C', bio: 'Digital Art - MidJourney - @topazlabs - @imagineart' },
-            'NEXUS_TO_NOVA': { name: 'NΞXUS', bio: 'Midjourney Explorer | Shaping thoughts into stories, visions born of machine' },
-            'MrsSpitFire252': { name: 'MrsSpitFire252', bio: 'Married to @RyanSpitFire252. Just a woman who loves family & AI creation' },
-            'RoyalKongz': { name: 'RoyalKongZ (Laurent)', bio: 'AI Visual Creator | Animations & Images 🎬' },
-            'revelinai': { name: 'revelin.ai', bio: 'AI tools & resources for creators' },
-            'GlennHasABeard': { name: 'Glenn', bio: 'Tech & AI enthusiast' },
-            'matrixmurals': { name: 'matrixmurals', bio: 'Sharing breathtaking AI-generated art daily! Grok is my friend!' },
-            'DrSadek_': { name: 'DrSadek 🪶', bio: 'I create AI Art | ImagineArt Ambassador' },
-            'UmbraNexus404': { name: 'UmbraNexus', bio: 'I make and share things inspired by futuristic and fantasy worlds' },
-            'ElaraVossAI': { name: 'ElaraVoss AI', bio: 'AI Artist exploring digital consciousness' },
-            'Mechanismo0': { name: 'Mechanismo', bio: 'Digital creator & AI artist' },
-            'karatademada': { name: 'karatademada', bio: 'Creative mind sharing art' },
-            'IamEmily2050': { name: 'Emily 2050', bio: 'Exploring the future with AI' },
+            'Noxifer81': { name: 'Noxifer', bio: '🦇🖤 I just share my AI creations 🖤🦇 #Freepik Creative Partner', pfp: 'https://pbs.twimg.com/profile_images/1879771502231363584/AKvg6eMr_400x400.jpg' },
+            'AllaAisling': { name: 'Alexandra Aisling', bio: 'AI Creator, redefining the boundaries of AI-generated art', pfp: 'https://pbs.twimg.com/profile_images/1868935691547029504/MvUL8dAM_400x400.jpg' },
+            'Julian_cano_': { name: 'Julian C', bio: 'Digital Art - MidJourney - @topazlabs - @imagineart', pfp: 'https://pbs.twimg.com/profile_images/1825644030843674624/h8OAGi9d_400x400.jpg' },
+            'NEXUS_TO_NOVA': { name: 'NΞXUS', bio: 'Midjourney Explorer | Shaping thoughts into stories, visions born of machine', pfp: 'https://pbs.twimg.com/profile_images/1858702748647022592/yCZvdO0O_400x400.jpg' },
+            'MrsSpitFire252': { name: 'MrsSpitFire252', bio: 'Married to @RyanSpitFire252. Just a woman who loves family & AI creation', pfp: 'https://pbs.twimg.com/profile_images/530201202482622464/l4R16qIX_400x400.jpg' },
+            'RoyalKongz': { name: 'RoyalKongZ (Laurent)', bio: 'AI Visual Creator | Animations & Images 🎬', pfp: 'https://pbs.twimg.com/profile_images/1831986868628484096/z_9pVAlG_400x400.jpg' },
+            'revelinai': { name: 'revelin.ai', bio: 'AI tools & resources for creators', pfp: 'https://pbs.twimg.com/profile_images/1869483946848522240/7pJmV1k5_400x400.jpg' },
+            'GlennHasABeard': { name: 'Glenn', bio: 'Tech & AI enthusiast', pfp: 'https://pbs.twimg.com/profile_images/1859526607752470528/5k1T2cB__400x400.jpg' },
+            'matrixmurals': { name: 'matrixmurals', bio: 'Sharing breathtaking AI-generated art daily! Grok is my friend!', pfp: 'https://pbs.twimg.com/profile_images/1837955512345522176/TJGiAqMU_400x400.jpg' },
+            'DrSadek_': { name: 'DrSadek 🪶', bio: 'I create AI Art | ImagineArt Ambassador', pfp: 'https://pbs.twimg.com/profile_images/1792519892511244288/A4gR0g1__400x400.jpg' },
+            'UmbraNexus404': { name: 'UmbraNexus', bio: 'I make and share things inspired by futuristic and fantasy worlds', pfp: 'https://pbs.twimg.com/profile_images/1878351642327625728/LxIQVQB_400x400.jpg' },
+            'ElaraVossAI': { name: 'ElaraVoss AI', bio: 'AI Artist exploring digital consciousness', pfp: 'https://pbs.twimg.com/profile_images/1879582549498478592/h6i4M7n__400x400.jpg' },
+            'Mechanismo0': { name: 'Mechanismo', bio: 'Digital creator & AI artist', pfp: 'https://pbs.twimg.com/profile_images/1877734828860473344/SK2i2tq__400x400.jpg' },
+            'karatademada': { name: 'karatademada', bio: 'Creative mind sharing art', pfp: 'https://pbs.twimg.com/profile_images/1877734590001176576/h4i3MqF__400x400.jpg' },
+            'IamEmily2050': { name: 'Emily 2050', bio: 'Exploring the future with AI', pfp: 'https://pbs.twimg.com/profile_images/1879590136021176320/l5i5HpE__400x400.jpg' },
         };
 
         const repliesTo = [
-            {username: 'Noxifer81', count: 5},
-            {username: 'AllaAisling', count: 4},
-            {username: 'Julian_cano_', count: 3},
-            {username: 'NEXUS_TO_NOVA', count: 3},
-            {username: 'RoyalKongz', count: 2},
-            {username: 'revelinai', count: 2},
-            {username: 'GlennHasABeard', count: 2},
-            {username: 'matrixmurals', count: 1},
-            {username: 'DrSadek_', count: 1},
-            {username: 'UmbraNexus404', count: 1},
+            {username: 'Noxifer81', count: 5}, {username: 'AllaAisling', count: 4}, {username: 'Julian_cano_', count: 3},
+            {username: 'NEXUS_TO_NOVA', count: 3}, {username: 'RoyalKongz', count: 2}, {username: 'revelinai', count: 2},
+            {username: 'GlennHasABeard', count: 2}, {username: 'matrixmurals', count: 1}, {username: 'DrSadek_', count: 1}, {username: 'UmbraNexus404', count: 1},
         ];
 
         const repliesFrom = [
-            {username: 'MrsSpitFire252', count: 3},
-            {username: 'AllaAisling', count: 2},
-            {username: 'Noxifer81', count: 2},
-            {username: 'NEXUS_TO_NOVA', count: 1},
-            {username: 'ElaraVossAI', count: 1},
-            {username: 'Mechanismo0', count: 1},
-            {username: 'karatademada', count: 1},
-            {username: 'IamEmily2050', count: 1},
-            {username: 'revelinai', count: 1},
-            {username: 'UmbraNexus404', count: 1},
+            {username: 'MrsSpitFire252', count: 3}, {username: 'AllaAisling', count: 2}, {username: 'Noxifer81', count: 2},
+            {username: 'NEXUS_TO_NOVA', count: 1}, {username: 'ElaraVossAI', count: 1}, {username: 'Mechanismo0', count: 1},
+            {username: 'karatademada', count: 1}, {username: 'IamEmily2050', count: 1}, {username: 'revelinai', count: 1}, {username: 'UmbraNexus404', count: 1},
         ];
 
         const engagementData = [
@@ -176,12 +147,8 @@
             {day: 'Thu', value: 85}, {day: 'Fri', value: 72}, {day: 'Sat', value: 28}, {day: 'Sun', value: 15},
         ];
 
-        function getInitials(name) {
-            return name.split(' ').map(n => n[0]).join('').substring(0,2).toUpperCase();
-        }
-
         function getUserData(username) {
-            return userData[username] || { name: username, bio: '' };
+            return userData[username] || { name: username, bio: '', pfp: '' };
         }
 
         function renderChart() {
@@ -198,12 +165,13 @@
             data.forEach((r, i) => {
                 const u = getUserData(r.username);
                 const rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : 'rank-other';
+                const pfpSrc = u.pfp ? u.pfp : `https://api.dicebear.com/7.x/initials/svg?seed=${r.username}&backgroundColor=8B5CF6`;
                 container.innerHTML += `
                     <div class="list-item">
                         <div class="rank ${rankClass}">${i + 1}</div>
-                        <div class="avatar">${getInitials(u.name)}</div>
+                        <img class="pfp" src="${pfpSrc}" alt="${r.username}" onerror="this.src='https://api.dicebear.com/7.x/initials/svg?seed=${r.username}&backgroundColor=8B5CF6'">
                         <div class="user-info">
-                            <span class="username">@${r.username}</span>
+                            <a class="username" href="https://x.com/${r.username}" target="_blank">@${r.username}</a>
                             <span class="name">${u.name}</span>
                             <span class="bio">${u.bio}</span>
                         </div>
