@@ -15,14 +15,13 @@
         .period-select { background: var(--bg-secondary); border: 1px solid var(--border); color: var(--text); padding: 12px 24px; border-radius: 10px; font-size: 14px; font-weight: 500; cursor: pointer; }
         
         .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
-        .stat-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px; padding: 24px; text-align: center; transition: all 0.2s; }
-        .stat-card:hover { border-color: var(--purple); transform: translateY(-2px); }
+        .stat-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px; padding: 24px; text-align: center; }
         .stat-value { font-size: 36px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-        .stat-label { font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+        .stat-label { font-size: 13px; color: var(--text-muted); text-transform: uppercase; }
 
         .charts-row { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 32px; }
         .chart-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
-        .chart-title { font-size: 16px; font-weight: 600; margin-bottom: 20px; color: var(--text); }
+        .chart-title { font-size: 16px; font-weight: 600; margin-bottom: 20px; }
         .bar-chart { display: flex; align-items: flex-end; justify-content: space-between; height: 180px; padding-top: 20px; }
         .bar-item { display: flex; flex-direction: column; align-items: center; flex: 1; }
         .bar { width: 28px; background: linear-gradient(180deg, var(--purple) 0%, #7C3AED 100%); border-radius: 6px 6px 0 0; }
@@ -34,46 +33,37 @@
         .list-title { font-size: 16px; font-weight: 600; margin-bottom: 16px; }
 
         .list-item { display: flex; align-items: center; padding: 14px; border-radius: 12px; margin-bottom: 8px; background: var(--bg-tertiary); }
-        .list-item:hover { background: #323238; }
-
+        
         .rank { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; margin-right: 14px; flex-shrink: 0; }
         .rank-1 { background: linear-gradient(135deg, var(--gold), #D97706); color: #000; }
         .rank-2 { background: linear-gradient(135deg, var(--silver), #6B7280); color: #000; }
         .rank-3 { background: linear-gradient(135deg, var(--bronze), #B45309); color: #000; }
         .rank-other { background: var(--bg-secondary); color: var(--text-secondary); }
 
-        .pfp { width: 48px; height: 48px; border-radius: 50%; margin-right: 14px; flex-shrink: 0; object-fit: cover; border: 2px solid var(--purple); background: var(--bg-secondary); }
+        .pfp { width: 48px; height: 48px; border-radius: 50%; margin-right: 14px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; color: white; border: 2px solid var(--purple); }
         
         .user-info { flex: 1; min-width: 0; }
-        .username { font-weight: 600; font-size: 15px; display: block; text-decoration: none; color: var(--purple-light); }
-        .username:hover { text-decoration: underline; }
+        .username { font-weight: 600; font-size: 15px; text-decoration: none; color: var(--purple-light); }
         .name { font-size: 13px; color: var(--text-secondary); display: block; margin-top: 2px; }
         .bio { font-size: 12px; color: var(--text-muted); display: block; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         
-        .count { color: var(--purple); font-weight: 700; font-size: 16px; margin-left: 12px; flex-shrink: 0; }
+        .count { color: var(--purple); font-weight: 700; font-size: 16px; margin-left: 12px; }
 
         .best-tweet { background: var(--bg-tertiary); border-radius: 12px; padding: 16px; margin-top: 16px; }
-        .best-tweet-text { color: var(--text); font-size: 14px; line-height: 1.5; margin-bottom: 12px; }
+        .best-tweet-text { font-size: 14px; margin-bottom: 12px; }
         .best-tweet-stats { display: flex; gap: 20px; }
-        .best-tweet-stat { text-align: center; }
         .best-tweet-stat-value { font-size: 18px; font-weight: 700; color: var(--purple); }
         .best-tweet-stat-label { font-size: 11px; color: var(--text-muted); }
 
         footer { text-align: center; padding: 24px; color: var(--text-muted); font-size: 13px; }
-
-        @media (max-width: 1024px) {
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .charts-row, .lists-row { grid-template-columns: 1fr; }
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <div class="logo">⚡ NotPhilSledge</div>
-            <select class="period-select" id="period">
-                <option>Today</option>
-                <option selected>This Week</option>
+            <select class="period-select">
+                <option>This Week</option>
                 <option>This Month</option>
                 <option>All Time</option>
             </select>
@@ -83,109 +73,41 @@
             <div class="stat-card"><div class="stat-value">98</div><div class="stat-label">Tweets</div></div>
             <div class="stat-card"><div class="stat-value">2.5K</div><div class="stat-label">Impressions</div></div>
             <div class="stat-card"><div class="stat-value">181</div><div class="stat-label">Engagements</div></div>
-            <div class="stat-card"><div class="stat-value">7.2%</div><div class="stat-label">Engagement Rate</div></div>
+            <div class="stat-card"><div class="stat-value">7.2%</div><div class="stat-label">Rate</div></div>
         </div>
 
         <div class="charts-row">
-            <div class="chart-card">
-                <div class="chart-title">📊 Daily Engagement</div>
-                <div class="bar-chart" id="engagementChart"></div>
-            </div>
-            <div class="chart-card">
-                <div class="chart-title">🔥 Best Tweet</div>
-                <div class="best-tweet">
-                    <div class="best-tweet-text">@username Thanks for the shoutout! Really appreciate the support from this community.</div>
-                    <div class="best-tweet-stats">
-                        <div class="best-tweet-stat"><div class="best-tweet-stat-value">2.4K</div><div class="best-tweet-stat-label">Impressions</div></div>
-                        <div class="best-tweet-stat"><div class="best-tweet-stat-value">156</div><div class="best-tweet-stat-label">Engagements</div></div>
-                    </div>
-                </div>
-            </div>
+            <div class="chart-card"><div class="chart-title">📊 Daily Engagement</div><div class="bar-chart" id="c"></div></div>
+            <div class="chart-card"><div class="chart-title">🔥 Best Tweet</div><div class="best-tweet"><div class="best-tweet-text">Thanks for the support!</div><div class="best-tweet-stats"><div><div class="best-tweet-stat-value">2.4K</div><div class="best-tweet-stat-label">Impressions</div></div></div></div></div>
         </div>
 
         <div class="lists-row">
-            <div class="list-card"><div class="list-title">📤 You Replied To</div><div id="repliesTo"></div></div>
-            <div class="list-card"><div class="list-title">🔄 Reply Reciprocity</div><div id="repliesFrom"></div></div>
+            <div class="list-card"><div class="list-title">📤 You Replied To</div><div id="r1"></div></div>
+            <div class="list-card"><div class="list-title">🔄 Reply Reciprocity</div><div id="r2"></div></div>
         </div>
-
-        <footer>NotPhilSledge Analytics • Built with X API • March 2026</footer>
+        <footer>NotPhilSledge Analytics • March 2026</footer>
     </div>
 
     <script>
-        const userData = {
-            'Noxifer81': { name: 'Noxifer', bio: '🦇🖤 I just share my AI creations 🖤🦇 #Freepik Creative Partner' },
-            'AllaAisling': { name: 'Alexandra Aisling', bio: 'AI Creator, redefining the boundaries of AI-generated art' },
-            'Julian_cano_': { name: 'Julian C', bio: 'Digital Art - MidJourney - @topazlabs - @imagineart' },
-            'NEXUS_TO_NOVA': { name: 'NΞXUS', bio: 'Midjourney Explorer | Shaping thoughts into stories, visions born of machine' },
-            'MrsSpitFire252': { name: 'MrsSpitFire252', bio: 'Married to @RyanSpitFire252. Just a woman who loves family & AI creation' },
-            'RoyalKongz': { name: 'RoyalKongZ (Laurent)', bio: 'AI Visual Creator | Animations & Images 🎬' },
-            'revelinai': { name: 'revelin.ai', bio: 'AI tools & resources for creators' },
-            'GlennHasABeard': { name: 'Glenn', bio: 'Tech & AI enthusiast' },
-            'matrixmurals': { name: 'matrixmurals', bio: 'Sharing breathtaking AI-generated art daily! Grok is my friend!' },
-            'DrSadek_': { name: 'DrSadek 🪶', bio: 'I create AI Art | ImagineArt Ambassador' },
-            'UmbraNexus404': { name: 'UmbraNexus', bio: 'I make and share things inspired by futuristic and fantasy worlds' },
-            'ElaraVossAI': { name: 'ElaraVoss AI', bio: 'AI Artist exploring digital consciousness' },
-            'Mechanismo0': { name: 'Mechanismo', bio: 'Digital creator & AI artist' },
-            'karatademada': { name: 'karatademada', bio: 'Creative mind sharing art' },
-            'IamEmily2050': { name: 'Emily 2050', bio: 'Exploring the future with AI' },
+        const users = {
+            'Noxifer81': 'No', 'AllaAisling': 'AA', 'Julian_cano_': 'JC', 'NEXUS_TO_NOVA': 'NX', 'MrsSpitFire252': 'MS', 'RoyalKongz': 'RK', 'revelinai': 're', 'GlennHasABeard': 'GL', 'matrixmurals': 'mt', 'DrSadek_': 'DS', 'UmbraNexus404': 'UN', 'ElaraVossAI': 'EV', 'Mechanismo0': 'Me', 'karatademada': 'ka', 'IamEmily2050': 'EM'
         };
-
-        const repliesTo = [
-            {username: 'Noxifer81', count: 5}, {username: 'AllaAisling', count: 4}, {username: 'Julian_cano_', count: 3},
-            {username: 'NEXUS_TO_NOVA', count: 3}, {username: 'RoyalKongz', count: 2}, {username: 'revelinai', count: 2},
-            {username: 'GlennHasABeard', count: 2}, {username: 'matrixmurals', count: 1}, {username: 'DrSadek_', count: 1}, {username: 'UmbraNexus404', count: 1},
-        ];
-
-        const repliesFrom = [
-            {username: 'MrsSpitFire252', count: 3}, {username: 'AllaAisling', count: 2}, {username: 'Noxifer81', count: 2},
-            {username: 'NEXUS_TO_NOVA', count: 1}, {username: 'ElaraVossAI', count: 1}, {username: 'Mechanismo0', count: 1},
-            {username: 'karatademada', count: 1}, {username: 'IamEmily2050', count: 1}, {username: 'revelinai', count: 1}, {username: 'UmbraNexus404', count: 1},
-        ];
-
-        const engagementData = [
-            {day: 'Mon', value: 45}, {day: 'Tue', value: 62}, {day: 'Wed', value: 38},
-            {day: 'Thu', value: 85}, {day: 'Fri', value: 72}, {day: 'Sat', value: 28}, {day: 'Sun', value: 15},
-        ];
-
-        function getPFP(username) {
-            return `https://unavatar.io/x/${username}`;
-        }
-
-        function getUserData(username) {
-            return userData[username] || { name: username, bio: '' };
-        }
-
-        function renderChart() {
-            const chart = document.getElementById('engagementChart');
-            const maxValue = Math.max(...engagementData.map(d => d.value));
-            engagementData.forEach(d => {
-                const height = Math.max((d.value / maxValue) * 140, 10);
-                chart.innerHTML += `<div class="bar-item"><div class="bar-value">${d.value}</div><div class="bar" style="height:${height}px;"></div><div class="bar-label">${d.day}</div></div>`;
+        const d1 = [{u:'Noxifer81',c:5},{u:'AllaAisling',c:4},{u:'Julian_cano_',c:3},{u:'NEXUS_TO_NOVA',c:3},{u:'RoyalKongz',c:2}];
+        const d2 = [{u:'MrsSpitFire252',c:3},{u:'AllaAisling',c:2},{u:'Noxifer81',c:2}];
+        const eng = [{d:'Mon',v:45},{d:'Tue',v:62},{d:'Wed',v:38},{d:'Thu',v:85},{d:'Fri',v:72},{d:'Sat',v:28},{d:'Sun',v:15}];
+        
+        const c = document.getElementById('c');
+        const mx = Math.max(...eng.map(e=>e.v));
+        eng.forEach(e=>{c.innerHTML+=`<div class="bar-item"><div class="bar-value">${e.v}</div><div class="bar" style="height:${e.v/mx*140}px"></div><div class="bar-label">${e.d}</div></div>`});
+        
+        function r(data, id) {
+            data.forEach((x,i)=>{
+                const rc = i===0?'rank-1':i===1?'rank-2':i===2?'rank-3':'rank-other';
+                const n = users[x.u]||x.u[0]+x.u[1];
+                document.getElementById(id).innerHTML+=`<div class="list-item"><div class="rank ${rc}">${i+1}</div><div class="pfp" style="background:${i<3?'var(--gold)':'var(--purple)'}">${n}</div><div class="user-info"><a class="username" href="https://x.com/${x.u}" target="_blank">@${x.u}</a><span class="name">${x.u}</span></div><div class="count">${x.c}</div></div>`;
             });
         }
-
-        function renderList(data, containerId) {
-            const container = document.getElementById(containerId);
-            data.forEach((r, i) => {
-                const u = getUserData(r.username);
-                const rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : 'rank-other';
-                container.innerHTML += `
-                    <div class="list-item">
-                        <div class="rank ${rankClass}">${i + 1}</div>
-                        <img class="pfp" src="${getPFP(r.username)}" alt="${r.username}" onerror="this.style.display='none'">
-                        <div class="user-info">
-                            <a class="username" href="https://x.com/${r.username}" target="_blank">@${r.username}</a>
-                            <span class="name">${u.name}</span>
-                            <span class="bio">${u.bio}</span>
-                        </div>
-                        <span class="count">${r.count}</span>
-                    </div>`;
-            });
-        }
-
-        renderChart();
-        renderList(repliesTo, 'repliesTo');
-        renderList(repliesFrom, 'repliesFrom');
+        r(d1,'r1'); r(d2,'r2');
     </script>
 </body>
 </html>
