@@ -2,50 +2,77 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<title>NotPhilSledge</title>
+<title>NotPhilSledge Analytics</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0D0D0F;--bg2:#18181B;--bg3:#27272A;--purple:#8B5CF6;--gold:#F59E0B;--silver:#9CA3AF;--bronze:#CD7F32}
-body{font-family:Inter,sans-serif;background:var(--bg);color:#fff;margin:0;padding:20px}
-.container{max-width:1100px;margin:0 auto}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
-.stat{background:var(--bg2);border:1px solid var(--bg3);border-radius:16px;padding:20px;text-align:center}
-.statv{font-size:32px;font-weight:700}
-.statl{font-size:12px;color:#71717a;text-transform:uppercase}
-.lists{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.list{background:var(--bg2);border:1px solid var(--bg3);border-radius:16px;padding:20px}
-.list-item{display:flex;align-items:center;padding:12px;background:var(--bg3);border-radius:10px;margin-bottom:8px}
-.rank{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;margin-right:12px}
+:root{--bg:#0D0D0F;--bg2:#18181B;--bg3:#27272A;--purple:#8B5CF6;--gold:#F59E0B;--silver:#9CA3AF;--bronze:#CD7F32;--text:#FAFAFA;--muted:#71717A}
+body{font-family:Inter,sans-serif;background:var(--bg);color:var(--text);margin:0;padding:24px}
+.c{max-width:1100px;margin:0 auto}
+.s{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
+.st{background:var(--bg2);border:1px solid var(--bg3);border-radius:16px;padding:24px;text-align:center}
+.sv{font-size:36px;font-weight:700}
+.sl{font-size:13px;color:var(--muted);text-transform:uppercase}
+.r{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px}
+.l{background:var(--bg2);border:1px solid var(--bg3);border-radius:16px;padding:24px}
+.li{display:flex;align-items:center;padding:14px;background:var(--bg3);border-radius:12px;margin-bottom:8px}
+.rk{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;margin-right:14px}
 .r1{background:linear-gradient(135deg,var(--gold),#D97706);color:#000}
 .r2{background:linear-gradient(135deg,var(--silver),#6B7280);color:#000}
 .r3{background:linear-gradient(135deg,var(--bronze),#B45309);color:#000}
-.r0{background:var(--bg2);color:#71717a}
-.pfp{width:40px;height:40px;border-radius:50%;margin-right:12px;background:var(--purple);border:2px solid var(--purple)}
-.u{font-weight:600;color:var(--purple);text-decoration:none;font-size:14px}
-.c{color:var(--purple);font-weight:700;margin-left:auto}
+.r0{background:var(--bg2);color:var(--muted)}
+.p{width:48px;height:48px;border-radius:50%;margin-right:14px;background:var(--purple);border:2px solid var(--purple);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:#fff}
+.u{font-weight:600;color:var(--purple);text-decoration:none;font-size:15px}
+.c2{color:var(--purple);font-weight:700;margin-left:auto}
 h2{font-size:16px;margin-bottom:16px}
+.bar{display:flex;align-items:flex-end;justify-content:space-between;height:160px;padding-top:16px}
+.bi{display:flex;flex-direction:column;align-items:center;flex:1}
+.ba{width:24px;background:linear-gradient(180deg,var(--purple),#7C3AED);border-radius:6px 6px 0 0}
+.bl{font-size:11px;color:var(--muted);margin-top:8px}
+.bv{font-size:11px;font-weight:600;margin-bottom:4px}
+.best{background:var(--bg3);border-radius:12px;padding:16px;margin-top:16px}
+.bestt{font-size:14px;margin-bottom:8px}
+.bestsv{font-size:20px;font-weight:700;color:var(--purple)}
+.bests{font-size:12px;color:var(--muted)}
+ftr{text-align:center;padding:20px;color:var(--muted);font-size:13px}
 </style>
 </head>
 <body>
-<div class="container">
+<div class="c">
 <h1>NotPhilSledge Analytics</h1>
-<div class="stats">
-<div class="stat"><div class="statv">98</div><div class="statl">Tweets</div></div>
-<div class="stat"><div class="statv">2.5K</div><div class="statl">Impressions</div></div>
-<div class="stat"><div class="statv">181</div><div class="statl">Engagements</div></div>
-<div class="stat"><div class="statv">7.2%</div><div class="statl">Rate</div></div>
+<div class="s">
+<div class="st"><div class="sv">98</div><div class="sl">Tweets</div></div>
+<div class="st"><div class="sv">2.5K</div><div class="sl">Impressions</div></div>
+<div class="st"><div class="sv">181</div><div class="sl">Engagements</div></div>
+<div class="st"><div class="sv">7.2%</div><div class="sl">Rate</div></div>
 </div>
-<div class="lists">
-<div class="list"><h2>You Replied To</h2><div id="r1"></div></div>
-<div class="list"><h2>Reply Reciprocity</h2><div id="r2"></div></div>
+<div class="r">
+<div class="l"><h2>Daily Engagement</h2><div class="bar" id="chart"></div></div>
+<div class="l"><h2>Best Tweet</h2><div class="best"><div class="bestt">Thanks for all the support!</div><div class="bestsv">2.4K</div><div class="bests">Impressions</div></div></div>
 </div>
+<div class="r">
+<div class="l"><h2>You Replied To</h2><div id="r1"></div></div>
+<div class="l"><h2>Reply Reciprocity</h2><div id="r2"></div></div>
+</div>
+<ftr>NotPhilSledge Analytics - March 2026</ftr>
 </div>
 <script>
-const pfps = {"Noxifer81": "/9j/4AAQSkZJRgABAQAAAQABAAD/4gKgSUNDX1BST0ZJTEUAAQEAAAKQbGNtcwQwAABtbnRyUkdCIFhZ...", "AllaAisling": "/9j/4AAQSkZJRgABAQAAAQABAAD/4gKgSUNDX1BST0ZJTEUAAQEAAAKQbGNtcwQwAABtbnRyUkdCIFhZ...", "Julian_cano_": "/9j/4AAQSkZJRgABAQAAAQABAAD/4gKgSUNDX1BST0ZJTEUAAQEAAAKQbGNtcwQwAABtbnRyUkdCIFhZ...", "NEXUS_TO_NOVA": "/9j/4AAQSkZJRgABAQAAAQABAAD/4gKgSUNDX1BST0ZJTEUAAQEAAAKQbGNtcwQwAABtbnRyUkdCIFhZ...", "MrsSpitFire252": "/9j/4AAQSkZJRgABAQAAAQABAAD/4gKgSUNDX1BST0ZJTEUAAQEAAAKQbGNtcwQwAABtbnRyUkdCIFhZ...", "RoyalKongz": "/9j/4AAQSkZJRgABAQAAAQABAAD/4gKgSUNDX1BST0ZJTEUAAQEAAAKQbGNtcwQwAABtbnRyUkdCIFhZ...", };
-const d1=[{u:"Noxifer81",c:5},{u:"AllaAisling",c:4},{u:"Julian_cano_",c:3},{u:"NEXUS_TO_NOVA",c:3},{u:"RoyalKongz",c:2}];
-const d2=[{u:"MrsSpitFire252",c:3},{u:"AllaAisling",c:2},{u:"Noxifer81",c:2}];
-function r(d,id){d.forEach((x,i)=>{const r=i===0?"r1":i===1?"r2":i===2?"r3":"r0";const p=pfps[x.u]?"background-image:url(data:image/jpeg;base64,"+pfps[x.u]+")":"background:#8B5CF6";document.getElementById(id).innerHTML+=`<div class="list-item"><div class="rank ${r}">${i+1}</div><div class="pfp" style="${p};background-size:cover"></div><a class="u" href="https://x.com/${x.u}" target="_blank">@${x.u}</a><div class="c">${x.c}</div></div>`})}
+const users={"Noxifer81":"NO","AllaAisling":"AA","Julian_cano_":"JC","NEXUS_TO_NOVA":"NX","MrsSpitFire252":"MS","RoyalKongz":"RK","revelinai":"re","GlennHasABeard":"GL","matrixmurals":"MT","DrSadek_":"DS","UmbraNexus404":"UN","ElaraVossAI":"EV","Mechanismo0":"ME","karatademada":"KA","IamEmily2050":"EM"};
+
+const d1=[{u:"Noxifer81",c:5},{u:"AllaAisling",c:4},{u:"Julian_cano_",c:3},{u:"NEXUS_TO_NOVA",c:3},{u:"RoyalKongz",c:2},{u:"revelinai",c:2},{u:"GlennHasABeard",c:2},{u:"matrixmurals",c:1},{u:"DrSadek_",c:1},{u:"UmbraNexus404",c:1}];
+const d2=[{u:"MrsSpitFire252",c:3},{u:"AllaAisling",c:2},{u:"Noxifer81",c:2},{u:"NEXUS_TO_NOVA",c:1},{u:"ElaraVossAI",c:1},{u:"Mechanismo0",c:1},{u:"karatademada",c:1},{u:"IamEmily2050",c:1}];
+const eng=[{d:"Mon",v:45},{d:"Tue",v:62},{d:"Wed",v:38},{d:"Thu",v:85},{d:"Fri",v:72},{d:"Sat",v:28},{d:"Sun",v:15}];
+
+const mx=Math.max(...eng.map(e=>e.v));
+document.getElementById("chart").innerHTML=eng.map(e=>`<div class="bi"><div class="bv">${e.v}</div><div class="ba" style="height:${e.v/mx*120}px"></div><div class="bl">${e.d}</div></div>`).join("");
+
+function r(d,id){
+document.getElementById(id).innerHTML=d.map((x,i)=>{
+const rc=i===0?"r1":i===1?"r2":i===2?"r3":"r0";
+const init=users[x.u]||x.u[0]+x.u[1];
+const bg=i<3?"var(--gold)":"var(--purple)";
+return `<div class="li"><div class="rk ${rc}">${i+1}</div><div class="p" style="background:${bg}">${init}</div><a class="u" href="https://x.com/${x.u}" target="_blank">@${x.u}</a><div class="c2">${x.c}</div></div>`;
+}).join("");
+}
 r(d1,"r1");r(d2,"r2");
 </script>
 </body>
