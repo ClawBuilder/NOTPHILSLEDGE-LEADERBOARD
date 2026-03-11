@@ -7,25 +7,33 @@ st.set_page_config(page_title="NotPhilSledge Leaderboard", page_icon="⚡")
 def get_avatar(username):
     return f"https://unavatar.io/x/{username}?fallback=https://api.dicebear.com/7.x/initials/svg?seed={username}&backgroundColor=8B5CF6"
 
-# Load data
-try:
-    with open('data.json', 'r') as f:
-        data = json.load(f)
-except FileNotFoundError:
-    st.error("data.json not found!")
-    st.stop()
+# Load data based on filter
+def load_data(period):
+    files = {
+        "Today": "today.json",
+        "This Week": "week.json", 
+        "This Month": "month.json",
+        "All Time": "alltime.json"
+    }
+    filename = files.get(period, "data.json")
+    try:
+        with open(filename, 'r') as f:
+            return json.load(f)
+    except:
+        with open('data.json', 'r') as f:
+            return json.load(f)
 
 st.title("🏆 NotPhilSledge Leaderboard")
 
-# Filter buttons (visual only for now)
-st.markdown("""
-<div style="display:flex;justify-content:center;gap:10px;margin-bottom:20px;">
-    <button style="background:#27272A;border:1px solid #3F3F46;color:#fff;padding:8px 16px;border-radius:8px;cursor:pointer;">Today</button>
-    <button style="background:#8B5CF6;border:none;color:#fff;padding:8px 16px;border-radius:8px;cursor:pointer;">This Week</button>
-    <button style="background:#27272A;border:1px solid #3F3F46;color:#fff;padding:8px 16px;border-radius:8px;cursor:pointer;">This Month</button>
-    <button style="background:#27272A;border:1px solid #3F3F46;color:#fff;padding:8px 16px;border-radius:8px;cursor:pointer;">All Time</button>
-</div>
-""", unsafe_allow_html=True)
+# Filter selection
+period = st.selectbox(
+    "Time Period",
+    ["Today", "This Week", "This Month", "All Time"],
+    label_visibility="collapsed"
+)
+
+# Load data for selected period
+data = load_data(period)
 
 # Stats
 t = data['totals']
@@ -71,4 +79,4 @@ for i, r in enumerate(data.get('repliesFrom', [])[:15]):
     """, unsafe_allow_html=True)
 
 st.markdown("---")
-st.caption(f"Updated: {data.get('lastUpdated', 'Unknown')}")
+st.caption(f"Period: {period} | Updated: {data.get('lastUpdated', 'Unknown')}")
