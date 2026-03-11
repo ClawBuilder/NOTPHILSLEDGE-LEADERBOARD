@@ -32,7 +32,7 @@
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 24px;
         }
@@ -46,7 +46,7 @@
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 800;
             background: linear-gradient(90deg, #fff, #A1A1AA);
             -webkit-background-clip: text;
@@ -57,7 +57,7 @@
             background: var(--bg-secondary);
             border: 1px solid var(--border);
             color: var(--text);
-            padding: 10px 20px;
+            padding: 12px 24px;
             border-radius: 10px;
             font-size: 14px;
             font-weight: 500;
@@ -87,7 +87,7 @@
         }
 
         .stat-value {
-            font-size: 32px;
+            font-size: 36px;
             font-weight: 700;
             color: var(--text);
             margin-bottom: 4px;
@@ -127,7 +127,7 @@
             display: flex;
             align-items: flex-end;
             justify-content: space-between;
-            height: 200px;
+            height: 180px;
             padding-top: 20px;
         }
 
@@ -139,7 +139,7 @@
         }
 
         .bar {
-            width: 32px;
+            width: 28px;
             background: linear-gradient(180deg, var(--purple) 0%, var(--purple-dark) 100%);
             border-radius: 6px 6px 0 0;
             transition: all 0.3s;
@@ -150,13 +150,13 @@
         }
 
         .bar-label {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-muted);
             margin-top: 8px;
         }
 
         .bar-value {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text);
             font-weight: 600;
             margin-bottom: 4px;
@@ -188,9 +188,9 @@
         .list-item {
             display: flex;
             align-items: center;
-            padding: 12px;
+            padding: 10px;
             border-radius: 10px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             transition: all 0.2s;
         }
 
@@ -199,15 +199,15 @@
         }
 
         .rank {
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 12px;
-            margin-right: 12px;
+            font-size: 11px;
+            margin-right: 10px;
         }
 
         .rank-1 { background: linear-gradient(135deg, var(--gold), #D97706); color: #000; }
@@ -216,10 +216,10 @@
         .rank-other { background: var(--bg-tertiary); color: var(--text-secondary); }
 
         .avatar {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
-            margin-right: 12px;
+            margin-right: 10px;
             background: var(--bg-tertiary);
         }
 
@@ -227,11 +227,48 @@
             flex: 1;
             font-weight: 500;
             color: var(--text);
+            font-size: 14px;
         }
 
         .count {
             color: var(--purple);
             font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Best Tweet */
+        .best-tweet {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 16px;
+        }
+
+        .best-tweet-text {
+            color: var(--text);
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .best-tweet-stats {
+            display: flex;
+            gap: 20px;
+        }
+
+        .best-tweet-stat {
+            text-align: center;
+        }
+
+        .best-tweet-stat-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--purple);
+        }
+
+        .best-tweet-stat-label {
+            font-size: 11px;
+            color: var(--text-muted);
         }
 
         /* Footer */
@@ -240,6 +277,13 @@
             padding: 24px;
             color: var(--text-muted);
             font-size: 13px;
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
         }
 
         @media (max-width: 1024px) {
@@ -253,9 +297,9 @@
     <div class="container">
         <header>
             <div class="logo">⚡ NotPhilSledge</div>
-            <select class="period-select" id="period">
+            <select class="period-select" id="period" onchange="updateData()">
                 <option>Today</option>
-                <option>This Week</option>
+                <option selected>This Week</option>
                 <option>This Month</option>
                 <option>All Time</option>
             </select>
@@ -264,19 +308,19 @@
         <!-- Stats -->
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-value">32</div>
+                <div class="stat-value" id="tweets">98</div>
                 <div class="stat-label">Tweets</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">1.2K</div>
+                <div class="stat-value" id="impressions">2.5K</div>
                 <div class="stat-label">Impressions</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">115</div>
+                <div class="stat-value" id="engagements">181</div>
                 <div class="stat-label">Engagements</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">9.6%</div>
+                <div class="stat-value" id="rate">7.2%</div>
                 <div class="stat-label">Engagement Rate</div>
             </div>
         </div>
@@ -285,24 +329,20 @@
         <div class="charts-row">
             <div class="chart-card">
                 <div class="chart-title">📊 Daily Engagement</div>
-                <div class="bar-chart" id="engagementChart">
-                    <!-- Bars generated by JS -->
-                </div>
+                <div class="bar-chart" id="engagementChart"></div>
             </div>
             <div class="chart-card">
                 <div class="chart-title">🔥 Best Tweet</div>
-                <div style="padding: 16px 0;">
-                    <p style="color: var(--text); font-size: 14px; margin-bottom: 16px;">
-                        @username Thanks for the shoutout! Really appreciate the support from this community.
-                    </p>
-                    <div style="display: flex; gap: 24px;">
-                        <div>
-                            <div style="font-size: 20px; font-weight: 700; color: var(--purple);">2.4K</div>
-                            <div style="font-size: 12px; color: var(--text-muted);">Impressions</div>
+                <div class="best-tweet">
+                    <div class="best-tweet-text">@username Thanks for the shoutout! Really appreciate the support from this community.</div>
+                    <div class="best-tweet-stats">
+                        <div class="best-tweet-stat">
+                            <div class="best-tweet-stat-value">2.4K</div>
+                            <div class="best-tweet-stat-label">Impressions</div>
                         </div>
-                        <div>
-                            <div style="font-size: 20px; font-weight: 700; color: var(--purple);">156</div>
-                            <div style="font-size: 12px; color: var(--text-muted);">Engagements</div>
+                        <div class="best-tweet-stat">
+                            <div class="best-tweet-stat-value">156</div>
+                            <div class="best-tweet-stat-label">Engagements</div>
                         </div>
                     </div>
                 </div>
@@ -313,20 +353,16 @@
         <div class="lists-row">
             <div class="list-card">
                 <div class="list-title">📤 You Replied To</div>
-                <div id="repliesTo">
-                    <!-- Generated by JS -->
-                </div>
+                <div id="repliesTo"></div>
             </div>
             <div class="list-card">
                 <div class="list-title">🔄 Reply Reciprocity</div>
-                <div id="repliesFrom">
-                    <!-- Generated by JS -->
-                </div>
+                <div id="repliesFrom"></div>
             </div>
         </div>
 
         <footer>
-            NotPhilSledge Analytics • Built with X API
+            NotPhilSledge Analytics • Built with X API • Updated: March 2026
         </footer>
     </div>
 
@@ -338,14 +374,24 @@
             {username: 'Julian_cano_', count: 3},
             {username: 'NEXUS_TO_NOVA', count: 3},
             {username: 'RoyalKongz', count: 2},
+            {username: 'revelinai', count: 2},
+            {username: 'GlennHasABeard', count: 2},
+            {username: 'matrixmurals', count: 1},
+            {username: 'DrSadek_', count: 1},
+            {username: 'UmbraNexus404', count: 1},
         ];
 
         const repliesFrom = [
             {username: 'MrsSpitFire252', count: 3},
-            {username: 'Noxifer81', count: 2},
             {username: 'AllaAisling', count: 2},
+            {username: 'Noxifer81', count: 2},
             {username: 'NEXUS_TO_NOVA', count: 1},
             {username: 'ElaraVossAI', count: 1},
+            {username: 'Mechanismo0', count: 1},
+            {username: 'karatademada', count: 1},
+            {username: 'IamEmily2050', count: 1},
+            {username: 'revelinai', count: 1},
+            {username: 'UmbraNexus404', count: 1},
         ];
 
         const engagementData = [
@@ -359,20 +405,22 @@
         ];
 
         // Render bar chart
-        const chart = document.getElementById('engagementChart');
-        const maxValue = Math.max(...engagementData.map(d => d.value));
-        
-        engagementData.forEach(d => {
-            const height = (d.value / maxValue) * 160;
-            const item = document.createElement('div');
-            item.className = 'bar-item';
-            item.innerHTML = `
-                <div class="bar-value">${d.value}</div>
-                <div class="bar" style="height: ${height}px;"></div>
-                <div class="bar-label">${d.day}</div>
-            `;
-            chart.appendChild(item);
-        });
+        function renderChart() {
+            const chart = document.getElementById('engagementChart');
+            const maxValue = Math.max(...engagementData.map(d => d.value));
+            
+            engagementData.forEach(d => {
+                const height = Math.max((d.value / maxValue) * 140, 10);
+                const item = document.createElement('div');
+                item.className = 'bar-item';
+                item.innerHTML = `
+                    <div class="bar-value">${d.value}</div>
+                    <div class="bar" style="height: ${height}px;"></div>
+                    <div class="bar-label">${d.day}</div>
+                `;
+                chart.appendChild(item);
+            });
+        }
 
         // Render lists
         function renderList(data, containerId) {
@@ -391,6 +439,15 @@
             });
         }
 
+        // Update data (placeholder for API)
+        function updateData() {
+            const period = document.getElementById('period').value;
+            // Would fetch new data here
+            console.log('Selected period:', period);
+        }
+
+        // Initialize
+        renderChart();
         renderList(repliesTo, 'repliesTo');
         renderList(repliesFrom, 'repliesFrom');
     </script>
