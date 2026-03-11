@@ -1,0 +1,80 @@
+{
+  "profile": {
+    "username": "NotPhilSledge",
+    "name": "NotPhilSledge"
+  },
+  "repliesTo": [
+    {
+      "username": "AllaAisling",
+      "count": 4
+    },
+    {
+      "username": "MrsSpitFire252",
+      "count": 4
+    },
+    {
+      "username": "RoyalKongz",
+      "count": 3
+    },
+    {
+      "username": "NEXUS_TO_NOVA",
+      "count": 3
+    },
+    {
+      "username": "AiAlpha49697",
+      "count": 2
+    },
+    {
+      "username": "micheal_ws18",
+      "count": 2
+    },
+    {
+      "username": "azed_ai",
+      "count": 2
+    },
+    {
+      "username": "NEXUS_TO_NOVA",
+      "count": 1
+    },
+    {
+      "username": "uncannot",
+      "count": 1
+    },
+    {
+      "username": "novikoff",
+      "count": 1
+    },
+    {
+      "username": "DrSadek_",
+      "count": 1
+    },
+    {
+      "username": "blasfemiadigit",
+      "count": 1
+    },
+    {
+      "username": "DocT___",
+      "count": 1
+    },
+    {
+      "username": "AI_Ethicist_NYC",
+      "count": 1
+    },
+    {
+      "username": "de5imulate",
+      "count": 1
+    }
+  ],
+  "repliesFrom": [
+    {
+      "username": "sample",
+      "count": 1
+    }
+  ],
+  "totals": {
+    "repliesSent": 29,
+    "repliesReceived": 16,
+    "uniqueEngaged": 16
+  },
+  "lastUpdated": "2026-03-11T09:48:00Z"
+}
