@@ -5,10 +5,13 @@
 <title>NotPhilSledge Analytics</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0D0D0F;--bg2:#18181B;--bg3:#27272A;--purple:#8B5CF6;--gold:#F59E0B;--silver:#9CA3AF;--bronze:#CD7F32;--text:#FAFAFA;--muted:#71717A;--green:#22C55E}
+:root{--bg:#0D0D0F;--bg2:#18181B;--bg3:#27272A;--purple:#8B5CF6;--gold:#F59E0B;--silver:#9CA3AF;--bronze:#CD7F32;--text:#FAFAFA;--muted:#71717A}
 body{font-family:Inter,sans-serif;background:var(--bg);color:var(--text);margin:0;padding:24px}
 .c{max-width:1100px;margin:0 auto}
-.s{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-bottom:32px}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+h1{font-size:28px;margin:0;background:linear-gradient(90deg,#fff,#aaa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sel{background:var(--bg2);border:1px solid var(--bg3);color:#fff;padding:10px 20px;border-radius:10px;font-size:14px;cursor:pointer}
+.s{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
 .st{background:var(--bg2);border:1px solid var(--bg3);border-radius:16px;padding:20px;text-align:center}
 .sv{font-size:28px;font-weight:700}
 .sl{font-size:11px;color:var(--muted);text-transform:uppercase}
@@ -34,50 +37,51 @@ h2{font-size:16px;margin-bottom:16px}
 .bestsv{font-size:20px;font-weight:700;color:var(--purple)}
 .bests{font-size:12px;color:var(--muted)}
 ftr{text-align:center;padding:20px;color:var(--muted);font-size:13px}
-h1{font-size:28px;margin-bottom:24px;background:linear-gradient(90deg,#fff,#aaa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.token{background:var(--green);color:#000;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:600}
 </style>
 </head>
 <body>
 <div class="c">
-<h1>⚡ NotPhilSledge Analytics</h1>
-<div class="s">
-<div class="st"><div class="sv">98</div><div class="sl">Tweets</div></div>
-<div class="st"><div class="sv">2.5K</div><div class="sl">Impressions</div></div>
-<div class="st"><div class="sv">181</div><div class="sl">Engagements</div></div>
-<div class="st"><div class="sv">7.2%</div><div class="sl">Rate</div></div>
+<div class="header">
+<h1>⚡ NotPhilSledge</h1>
+<select class="sel" id="period" onchange="update()">
+<option value="today">Today</option>
+<option value="week" selected>7 Days</option>
+</select>
 </div>
+<div class="s" id="stats"></div>
 <div class="r">
 <div class="l"><h2>Daily Engagement</h2><div class="bar" id="chart"></div></div>
-<div class="l"><h2>Best Tweet</h2><div class="best"><div class="bestt">Thanks for all the support!</div><div class="bestsv">2.4K</div><div class="bests">Impressions</div></div></div>
+<div class="l"><h2>Best Tweet</h2><div class="best"><div class="bestt" id="bestText">Thanks for all the support!</div><div class="bestsv" id="bestImps">2.4K</div><div class="bests">Impressions</div></div></div>
 </div>
 <div class="r">
 <div class="l"><h2>You Replied To</h2><div id="r1"></div></div>
 <div class="l"><h2>Reply Reciprocity</h2><div id="r2"></div></div>
 </div>
-<ftr>Updated: March 11, 2026</ftr>
+<ftr>NotPhilSledge Analytics</ftr>
 </div>
 <script>
-const d1=[
-{u:"Noxifer81",c:5},{u:"AllaAisling",c:4},{u:"Julian_cano_",c:3},{u:"NEXUS_TO_NOVA",c:3},
-{u:"RoyalKongz",c:2},{u:"revelinai",c:2},{u:"GlennHasABeard",c:2},{u:"matrixmurals",c:1},{u:"DrSadek_",c:1},{u:"UmbraNexus404",c:1}
-];
-const d2=[
-{u:"MrsSpitFire252",c:3},{u:"AllaAisling",c:2},{u:"Noxifer81",c:2},
-{u:"NEXUS_TO_NOVA",c:1},{u:"ElaraVossAI",c:1},{u:"Mechanismo0",c:1},{u:"karatademada",c:1},{u:"IamEmily2050",c:1}
-];
-const eng=[{d:"Mon",v:45},{d:"Tue",v:62},{d:"Wed",v:38},{d:"Thu",v:85},{d:"Fri",v:72},{d:"Sat",v:28},{d:"Sun",v:15}];
-
-const mx=Math.max(...eng.map(e=>e.v));
-document.getElementById("chart").innerHTML=eng.map(e=>`<div class="bi"><div class="bv">${e.v}</div><div class="ba" style="height:${e.v/mx*120}px"></div><div class="bl">${e.d}</div></div>`).join("");
-
-function r(d,id){
-document.getElementById(id).innerHTML=d.map((x,i)=>{
-const rc=i===0?"r1":i===1?"r2":i===2?"r3":"r0";
-return `<div class="li"><div class="rk ${rc}">${i+1}</div><img class="p" src="https://unavatar.io/twitter/${x.u}"><a class="u" href="https://x.com/${x.u}" target="_blank">@${x.u}</a><div class="c2">${x.c}</div></div>`;
-}).join("");
+const data={
+today:{tweets:12,imps:"380",eng:42,rate:"11%",best:"Thanks for the support!",bestImps:"156",
+d1:[{u:"Noxifer81",c:2},{u:"AllaAisling",c:1},{u:"matrixmurals",c:1}],
+d2:[{u:"MrsSpitFire252",c:1},{u:"AllaAisling",c:1}],
+eng:[{d:"Mon",v:0},{d:"Tue",v:0},{d:"Wed",v:0},{d:"Thu",v:0},{d:"Fri",v:12},{d:"Sat",v:0},{d:"Sun",v:0}]},
+week:{tweets:98,imps:"2.5K",eng:181,rate:"7.2%",best:"Thanks for all the support!",bestImps:"2.4K",
+d1:[{u:"Noxifer81",c:5},{u:"AllaAisling",c:4},{u:"Julian_cano_",c:3},{u:"NEXUS_TO_NOVA",c:3},{u:"RoyalKongz",c:2},{u:"revelinai",c:2},{u:"GlennHasABeard",c:2},{u:"matrixmurals",c:1},{u:"DrSadek_",c:1},{u:"UmbraNexus404",c:1}],
+d2:[{u:"MrsSpitFire252",c:3},{u:"AllaAisling",c:2},{u:"Noxifer81",c:2},{u:"NEXUS_TO_NOVA",c:1},{u:"ElaraVossAI",c:1},{u:"Mechanismo0",c:1},{u:"karatademada",c:1},{u:"IamEmily2050",c:1}],
+eng:[{d:"Mon",v:45},{d:"Tue",v:62},{d:"Wed",v:38},{d:"Thu",v:85},{d:"Fri",v:72},{d:"Sat",v:28},{d:"Sun",v:15}]}
+};
+function update(){
+const p=document.getElementById("period").value;
+const d=data[p];
+document.getElementById("stats").innerHTML=`<div class="st"><div class="sv">${d.tweets}</div><div class="sl">Tweets</div></div><div class="st"><div class="sv">${d.imps}</div><div class="sl">Impressions</div></div><div class="st"><div class="sv">${d.eng}</div><div class="sl">Engagements</div></div><div class="st"><div class="sv">${d.rate}</div><div class="sl">Rate</div></div>`;
+document.getElementById("bestText").innerText=d.best;
+document.getElementById("bestImps").innerText=d.bestImps;
+const mx=Math.max(...d.eng.map(e=>e.v));
+document.getElementById("chart").innerHTML=d.eng.map(e=>`<div class="bi"><div class="bv">${e.v}</div><div class="ba" style="height:${e.v/mx*120}px"></div><div class="bl">${e.d}</div></div>`).join("");
+function r(list,id){document.getElementById(id).innerHTML=list.map((x,i)=>{const rc=i===0?"r1":i===1?"r2":i===2?"r3":"r0";return`<div class="li"><div class="rk ${rc}">${i+1}</div><img class="p" src="https://unavatar.io/twitter/${x.u}"><a class="u" href="https://x.com/${x.u}" target="_blank">@${x.u}</a><div class="c2">${x.c}</div></div>`}).join("")}
+r(d.d1,"r1");r(d.d2,"r2");
 }
-r(d1,"r1");r(d2,"r2");
+update();
 </script>
 </body>
 </html>
